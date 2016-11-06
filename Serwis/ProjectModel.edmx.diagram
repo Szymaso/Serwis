@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20e8c4903d8443fc98062f0896cc2c5b" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjektModel.Clients" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.DeviceRepairCards" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.DevicesCards" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.DeviceTypes" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.Firms" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.Places" Width="1.5" PointX="2.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.Statuses" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.Users" Width="1.5" PointX="5" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="ProjektModel.FK_DevicesCards_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_DeviceRepairCards_DevicesCards" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_DevicesCards_Firms" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_DevicesCards_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_DevicesCards_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_Users_Places" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

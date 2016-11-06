@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjektModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="house_no" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="locum_no" Type="varchar" MaxLength="5" />
+          <Property Name="phone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceRepairCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="damage_desc" Type="text" Nullable="false" />
+          <Property Name="diagnosis" Type="text" />
+          <Property Name="repair_note" Type="text" />
+          <Property Name="repaired" Type="bit" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="device_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DevicesCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="serial_no" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="firm_id" Type="int" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="type_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="house_no" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="locum_no" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nip" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Places">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="access_level" Type="tinyint" />
+          <Property Name="place_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DeviceRepairCards_DevicesCards">
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="1" />
+          <End Role="DeviceRepairCards" Type="Self.DeviceRepairCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DevicesCards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceRepairCards">
+              <PropertyRef Name="device_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevicesCards_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevicesCards_Firms">
+          <End Role="Firms" Type="Self.Firms" Multiplicity="0..1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="firm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevicesCards_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevicesCards_Types">
+          <End Role="DeviceTypes" Type="Self.DeviceTypes" Multiplicity="1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Places">
+          <End Role="Places" Type="Self.Places" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Places">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjektModelStoreContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceRepairCards" EntityType="Self.DeviceRepairCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DevicesCards" EntityType="Self.DevicesCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceTypes" EntityType="Self.DeviceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firms" EntityType="Self.Firms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Places" EntityType="Self.Places" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DeviceRepairCards_DevicesCards" Association="Self.FK_DeviceRepairCards_DevicesCards">
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+            <End Role="DeviceRepairCards" EntitySet="DeviceRepairCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevicesCards_Clients" Association="Self.FK_DevicesCards_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevicesCards_Firms" Association="Self.FK_DevicesCards_Firms">
+            <End Role="Firms" EntitySet="Firms" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevicesCards_Statuses" Association="Self.FK_DevicesCards_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevicesCards_Types" Association="Self.FK_DevicesCards_Types">
+            <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Places" Association="Self.FK_Users_Places">
+            <End Role="Places" EntitySet="Places" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjektModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="house_no" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="locum_no" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DevicesCards" Relationship="Self.FK_DevicesCards_Clients" FromRole="Clients" ToRole="DevicesCards" />
+        </EntityType>
+        <EntityType Name="DeviceRepairCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="damage_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="diagnosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="repair_note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="repaired" Type="Boolean" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="device_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DevicesCards" Relationship="Self.FK_DeviceRepairCards_DevicesCards" FromRole="DeviceRepairCards" ToRole="DevicesCards" />
+        </EntityType>
+        <EntityType Name="DevicesCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="manufacturer" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="serial_no" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="firm_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="type_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_DevicesCards_Clients" FromRole="DevicesCards" ToRole="Clients" />
+          <NavigationProperty Name="DeviceRepairCards" Relationship="Self.FK_DeviceRepairCards_DevicesCards" FromRole="DevicesCards" ToRole="DeviceRepairCards" />
+          <NavigationProperty Name="Firms" Relationship="Self.FK_DevicesCards_Firms" FromRole="DevicesCards" ToRole="Firms" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK_DevicesCards_Statuses" FromRole="DevicesCards" ToRole="Statuses" />
+          <NavigationProperty Name="DeviceTypes" Relationship="Self.FK_DevicesCards_Types" FromRole="DevicesCards" ToRole="DeviceTypes" />
+        </EntityType>
+        <EntityType Name="DeviceTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DevicesCards" Relationship="Self.FK_DevicesCards_Types" FromRole="DeviceTypes" ToRole="DevicesCards" />
+        </EntityType>
+        <EntityType Name="Firms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="house_no" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="locum_no" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DevicesCards" Relationship="Self.FK_DevicesCards_Firms" FromRole="Firms" ToRole="DevicesCards" />
+        </EntityType>
+        <EntityType Name="Places">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Places" FromRole="Places" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DevicesCards" Relationship="Self.FK_DevicesCards_Statuses" FromRole="Statuses" ToRole="DevicesCards" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="access_level" Type="Byte" />
+          <Property Name="place_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Places" Relationship="Self.FK_Users_Places" FromRole="Users" ToRole="Places" />
+        </EntityType>
+        <Association Name="FK_DevicesCards_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceRepairCards_DevicesCards">
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="1" />
+          <End Role="DeviceRepairCards" Type="Self.DeviceRepairCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DevicesCards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceRepairCards">
+              <PropertyRef Name="device_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevicesCards_Firms">
+          <End Role="Firms" Type="Self.Firms" Multiplicity="0..1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="firm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevicesCards_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevicesCards_Types">
+          <End Role="DeviceTypes" Type="Self.DeviceTypes" Multiplicity="1" />
+          <End Role="DevicesCards" Type="Self.DevicesCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DevicesCards">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Places">
+          <End Role="Places" Type="Self.Places" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Places">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjektEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="DeviceRepairCards" EntityType="Self.DeviceRepairCards" />
+          <EntitySet Name="DevicesCards" EntityType="Self.DevicesCards" />
+          <EntitySet Name="DeviceTypes" EntityType="Self.DeviceTypes" />
+          <EntitySet Name="Firms" EntityType="Self.Firms" />
+          <EntitySet Name="Places" EntityType="Self.Places" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_DevicesCards_Clients" Association="Self.FK_DevicesCards_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceRepairCards_DevicesCards" Association="Self.FK_DeviceRepairCards_DevicesCards">
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+            <End Role="DeviceRepairCards" EntitySet="DeviceRepairCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevicesCards_Firms" Association="Self.FK_DevicesCards_Firms">
+            <End Role="Firms" EntitySet="Firms" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevicesCards_Statuses" Association="Self.FK_DevicesCards_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevicesCards_Types" Association="Self.FK_DevicesCards_Types">
+            <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+            <End Role="DevicesCards" EntitySet="DevicesCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Places" Association="Self.FK_Users_Places">
+            <End Role="Places" EntitySet="Places" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjektModelStoreContainer" CdmEntityContainer="ProjektEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="ProjektModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house_no" ColumnName="house_no" />
+                <ScalarProperty Name="locum_no" ColumnName="locum_no" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceRepairCards">
+            <EntityTypeMapping TypeName="ProjektModel.DeviceRepairCards">
+              <MappingFragment StoreEntitySet="DeviceRepairCards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="damage_desc" ColumnName="damage_desc" />
+                <ScalarProperty Name="diagnosis" ColumnName="diagnosis" />
+                <ScalarProperty Name="repair_note" ColumnName="repair_note" />
+                <ScalarProperty Name="repaired" ColumnName="repaired" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DevicesCards">
+            <EntityTypeMapping TypeName="ProjektModel.DevicesCards">
+              <MappingFragment StoreEntitySet="DevicesCards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="serial_no" ColumnName="serial_no" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="firm_id" ColumnName="firm_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTypes">
+            <EntityTypeMapping TypeName="ProjektModel.DeviceTypes">
+              <MappingFragment StoreEntitySet="DeviceTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firms">
+            <EntityTypeMapping TypeName="ProjektModel.Firms">
+              <MappingFragment StoreEntitySet="Firms">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house_no" ColumnName="house_no" />
+                <ScalarProperty Name="locum_no" ColumnName="locum_no" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="nip" ColumnName="nip" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Places">
+            <EntityTypeMapping TypeName="ProjektModel.Places">
+              <MappingFragment StoreEntitySet="Places">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="ProjektModel.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ProjektModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="access_level" ColumnName="access_level" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
