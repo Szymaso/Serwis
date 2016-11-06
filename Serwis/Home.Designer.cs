@@ -88,6 +88,7 @@
             this.addNewToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
             this.addNewToolStripMenuItem.Text = "Nowy";
             this.addNewToolStripMenuItem.Visible = false;
+            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
             // 
             // listUsersToolStripMenuItem
             // 
@@ -119,6 +120,7 @@
             this.Controls.Add(this.homePanel);
             this.Name = "Home";
             this.Text = "Home";
+            this.Activated += new System.EventHandler(this.Home_Activated);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);

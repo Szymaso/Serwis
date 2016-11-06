@@ -11,7 +11,7 @@ namespace Serwis
     {
         ProjektEntities pe = new ProjektEntities();
 
-        private int currentUserId;
+        private static int currentUserId = 0;
 
         public bool login(string username, string password)
         {
@@ -19,7 +19,7 @@ namespace Serwis
             {
                 if (user.name == username && user.password == this.generateSha1(password))
                 {
-                    this.currentUserId = user.Id;
+                    currentUserId = user.Id;
                     return true;
                 }
             }
@@ -38,6 +38,19 @@ namespace Serwis
                 sb.Append(hex);
             }
             return sb.ToString();
+        }
+
+        public bool isSuperadmin()
+        {
+            if (pe.Users.Find(currentUserId).access_level != 2)
+                return false;
+            return true;
+        }
+
+        public bool add(string name, string password, int place_id, int access_level)
+        {
+
+            return true;
         }
     }
 }

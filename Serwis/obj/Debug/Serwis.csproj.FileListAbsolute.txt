@@ -12,3 +12,4 @@ D:\C#\Serwis\Serwis\obj\Debug\Serwis.Properties.Resources.resources
 D:\C#\Serwis\Serwis\obj\Debug\Serwis.csproj.GenerateResource.Cache
 D:\C#\Serwis\Serwis\obj\Debug\Serwis.exe
 D:\C#\Serwis\Serwis\obj\Debug\Serwis.pdb
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.UserAdd.resources

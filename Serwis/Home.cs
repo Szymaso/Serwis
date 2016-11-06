@@ -15,12 +15,24 @@ namespace Serwis
         public Home()
         {
             InitializeComponent();
-          //  if (!CurrentUser.is_loggged())
-          //  {
-                this.WindowState = FormWindowState.Minimized;
-                this.ShowInTaskbar = false;
-                new Login(this).Show();
-          //  }
+            User u = new User();
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
+            new Login(this).Show();
+        }
+        private void Home_Activated(object sender, EventArgs e)
+        {
+            User u = new User();
+            if (u.isSuperadmin())
+            {
+                this.addNewToolStripMenuItem.Visible = true;
+                this.listUsersToolStripMenuItem.Visible = true;
+            }
+        }
+
+        private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new UserAdd(this).Show();
         }
     }
 }
