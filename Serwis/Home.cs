@@ -15,6 +15,12 @@ namespace Serwis
         public Home()
         {
             InitializeComponent();
+          //  if (!CurrentUser.is_loggged())
+          //  {
+                this.WindowState = FormWindowState.Minimized;
+                this.ShowInTaskbar = false;
+                new Login(this).Show();
+          //  }
         }
     }
 }

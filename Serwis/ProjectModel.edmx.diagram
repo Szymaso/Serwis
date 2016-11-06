@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="ProjektModel.DevicesCards" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.DeviceTypes" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.Firms" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.Places" Width="1.5" PointX="2.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.Places" Width="1.5" PointX="9" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.Statuses" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.Users" Width="1.5" PointX="5" PointY="6" IsExpanded="true" />
         <AssociationConnector Association="ProjektModel.FK_DevicesCards_Clients" ManuallyRouted="false" />

@@ -1,1 +1,14 @@
 D:\C#\Serwis\Serwis\bin\Debug\Serwis.exe.config
+D:\C#\Serwis\Serwis\bin\Debug\Serwis.exe
+D:\C#\Serwis\Serwis\bin\Debug\Serwis.pdb
+D:\C#\Serwis\Serwis\bin\Debug\EntityFramework.dll
+D:\C#\Serwis\Serwis\bin\Debug\EntityFramework.SqlServer.dll
+D:\C#\Serwis\Serwis\bin\Debug\EntityFramework.xml
+D:\C#\Serwis\Serwis\bin\Debug\EntityFramework.SqlServer.xml
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.csprojResolveAssemblyReference.cache
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.Home.resources
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.Login.resources
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.Properties.Resources.resources
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.csproj.GenerateResource.Cache
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.exe
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.pdb
