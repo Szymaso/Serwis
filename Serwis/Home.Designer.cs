@@ -45,7 +45,7 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // menu
             // 
@@ -56,7 +56,7 @@
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(1196, 28);
-            this.menu.TabIndex = 3;
+            this.menu.TabIndex = 1;
             this.menu.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -96,6 +96,7 @@
             this.listUsersToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
             this.listUsersToolStripMenuItem.Text = "Lista ";
             this.listUsersToolStripMenuItem.Visible = false;
+            this.listUsersToolStripMenuItem.Click += new System.EventHandler(this.listUsersToolStripMenuItem_Click);
             // 
             // notifyIcon1
             // 
@@ -104,20 +105,20 @@
             // 
             // homePanel
             // 
-            this.homePanel.BackColor = System.Drawing.SystemColors.Control;
             this.homePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homePanel.Location = new System.Drawing.Point(0, 0);
+            this.homePanel.Location = new System.Drawing.Point(0, 28);
             this.homePanel.Name = "homePanel";
-            this.homePanel.Size = new System.Drawing.Size(1196, 447);
-            this.homePanel.TabIndex = 4;
+            this.homePanel.Size = new System.Drawing.Size(1196, 419);
+            this.homePanel.TabIndex = 2;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 447);
-            this.Controls.Add(this.menu);
             this.Controls.Add(this.homePanel);
+            this.Controls.Add(this.menu);
+            this.MainMenuStrip = this.menu;
             this.Name = "Home";
             this.Text = "Home";
             this.Activated += new System.EventHandler(this.Home_Activated);

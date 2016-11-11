@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Data;
+using System.Reflection;
+
 
 namespace Serwis
 {
@@ -15,13 +18,16 @@ namespace Serwis
 
         public bool login(string username, string password)
         {
-            password = generateSha1(password);
-            var user = pe.Users.FirstOrDefault(u => u.name == username && u.password == password);
-            if (user != null)
+            try
             {
-                currentUserId = user.Id;
-                return true;
-            }
+                password = generateSha1(password);
+                var user = pe.Users.FirstOrDefault(u => u.name == username && u.password == password);
+                if (user != null)
+                {
+                    currentUserId = user.Id;
+                    return true;
+                }
+            } catch { return false; }
             return false;
         }
 
@@ -46,6 +52,11 @@ namespace Serwis
             return true;
         }
 
+        public int from()
+        {
+            return pe.Users.Find(currentUserId).place_id;
+        }
+
         public bool add(string username, string password, int access_level, string place)
         {
             int placeId = pe.Places.FirstOrDefault(p => p.address == place).id;
@@ -55,11 +66,61 @@ namespace Serwis
             {
                 pe.SaveChanges();
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
             return true;
+        }
+
+        public static DataTable ToDataTable<T>(List<T> items)
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+
+            //Get all the properties
+            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo prop in Props)
+            {
+                //Setting column names as Property names
+                dataTable.Columns.Add(prop.Name);
+            }
+            foreach (T item in items)
+            {
+                var values = new object[Props.Length];
+                for (int i = 0; i < Props.Length; i++)
+                {
+                    //inserting property values to datatable rows
+                    values[i] = Props[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+            //put a breakpoint here and check datatable
+            return dataTable;
+        }
+
+        public DataTable listUsers()
+        {
+            List<Users> list;
+
+            if (isSuperadmin())
+                list = pe.Users.ToList();
+            else
+                list = pe.Users.Where(u => u.place_id == from()).ToList();
+            DataTable table = ToDataTable<Users>(list);
+            //table.Columns.Remove("password");
+            table.Columns[0].ColumnName = "id";
+            table.Columns[1].ColumnName = "Nazwa użytkownika";
+            table.Columns[2].ColumnName = "Data utworzenia";
+            table.Columns[3].ColumnName = "Data ostatniej modyfikacji";
+            table.Columns[4].ColumnName = "Poziom uprawnień";
+            table.Columns[5].ColumnName = "Miejsce";
+            table.Columns.Add();
+            return table;
+            
+           
+            //users.CopyToDataTable()
+            
+            //return table;
         }
     }
 }

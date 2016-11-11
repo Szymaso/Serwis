@@ -26,7 +26,7 @@ namespace Serwis
             User u = new User();
             if (!u.login(user_name.Text, user_password.Text))
             {
-                error_label.Text = "Podano nieprawidłowe dane";
+                error_label.Text = "Podano nieprawidłowe dane\nlub wystąpił problem z serwerem";
                 this.login_button.Enabled = true;
             }
             else

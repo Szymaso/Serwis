@@ -34,5 +34,13 @@ namespace Serwis
         {
             new UserAdd(this).Show();
         }
+
+        private void listUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserList list = new UserList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
+        }
     }
 }

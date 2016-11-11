@@ -58,7 +58,7 @@
             this.error_label.Location = new System.Drawing.Point(13, 9);
             this.error_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.error_label.Name = "error_label";
-            this.error_label.Size = new System.Drawing.Size(412, 39);
+            this.error_label.Size = new System.Drawing.Size(412, 72);
             this.error_label.TabIndex = 12;
             this.error_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
