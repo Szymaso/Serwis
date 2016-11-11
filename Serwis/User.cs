@@ -15,13 +15,12 @@ namespace Serwis
 
         public bool login(string username, string password)
         {
-            foreach (var user in pe.Users)
+            password = generateSha1(password);
+            var user = pe.Users.FirstOrDefault(u => u.name == username && u.password == password);
+            if (user != null)
             {
-                if (user.name == username && user.password == this.generateSha1(password))
-                {
-                    currentUserId = user.Id;
-                    return true;
-                }
+                currentUserId = user.Id;
+                return true;
             }
             return false;
         }
@@ -47,9 +46,19 @@ namespace Serwis
             return true;
         }
 
-        public bool add(string name, string password, int place_id, int access_level)
+        public bool add(string username, string password, int access_level, string place)
         {
-
+            int placeId = pe.Places.FirstOrDefault(p => p.address == place).id;
+            Users user = new Users { name = username, password = generateSha1(password), access_level = Convert.ToByte(access_level), place_id = placeId, created_at = DateTime.Now, updated_at = DateTime.Now };
+            pe.Users.Add(user);
+            try
+            {
+                pe.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
             return true;
         }
     }

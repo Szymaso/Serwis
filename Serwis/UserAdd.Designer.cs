@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.user_place = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.user_type = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,17 +36,8 @@
             this.user_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.addUser_button = new System.Windows.Forms.Button();
+            this.placeBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // user_place
-            // 
-            this.user_place.BackColor = System.Drawing.SystemColors.Window;
-            this.user_place.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.user_place.Location = new System.Drawing.Point(228, 116);
-            this.user_place.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.user_place.Name = "user_place";
-            this.user_place.Size = new System.Drawing.Size(228, 26);
-            this.user_place.TabIndex = 22;
             // 
             // label4
             // 
@@ -135,13 +125,22 @@
             this.addUser_button.TabIndex = 14;
             this.addUser_button.Text = "Dodaj użytkownika";
             this.addUser_button.UseVisualStyleBackColor = true;
+            this.addUser_button.Click += new System.EventHandler(this.addUser_button_Click);
+            // 
+            // placeBox
+            // 
+            this.placeBox.FormattingEnabled = true;
+            this.placeBox.Location = new System.Drawing.Point(228, 117);
+            this.placeBox.Name = "placeBox";
+            this.placeBox.Size = new System.Drawing.Size(228, 24);
+            this.placeBox.TabIndex = 22;
             // 
             // UserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 259);
-            this.Controls.Add(this.user_place);
+            this.Controls.Add(this.placeBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.user_type);
             this.Controls.Add(this.label3);
@@ -159,8 +158,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox user_place;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox user_type;
         private System.Windows.Forms.Label label3;
@@ -169,5 +166,6 @@
         private System.Windows.Forms.TextBox user_name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button addUser_button;
+        private System.Windows.Forms.ComboBox placeBox;
     }
 }
