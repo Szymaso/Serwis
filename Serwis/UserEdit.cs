@@ -81,5 +81,30 @@ namespace Serwis
                 home.notifyIcon1.ShowBalloonTip(3000);
             }
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            User u = new User();
+            if (u.delete(this.userid))
+            {
+                home.notifyIcon1.Icon = SystemIcons.Application;
+                home.notifyIcon1.BalloonTipText = "Usunięto użytkownika";
+                home.notifyIcon1.BalloonTipTitle = "Edycja użytkownika";
+                home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                home.notifyIcon1.Visible = true;
+                home.notifyIcon1.ShowBalloonTip(3000);
+                ul.display();
+                this.Close();
+            }
+            else
+            {
+                home.notifyIcon1.Icon = SystemIcons.Exclamation;
+                home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas usuwania użytkownika";
+                home.notifyIcon1.BalloonTipTitle = "Edycja użytkownik";
+                home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
+                home.notifyIcon1.Visible = true;
+                home.notifyIcon1.ShowBalloonTip(3000);
+            }
+        }
     }
 }

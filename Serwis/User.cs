@@ -156,5 +156,16 @@ namespace Serwis
                 return false;
             }
         }
+        public bool delete(int id)
+        {
+            var user = pe.Users.Find(id);
+            try
+            {
+                pe.Users.Remove(user);
+                pe.SaveChanges();
+                return true;
+            }
+            catch { return false; }
+        }
     }
 }

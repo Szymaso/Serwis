@@ -58,6 +58,7 @@
             this.deleteButton.TabIndex = 45;
             this.deleteButton.Text = "Usuń użytkownika";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // label4
             // 
