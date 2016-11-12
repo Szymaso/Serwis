@@ -81,7 +81,6 @@ namespace Serwis
                 home.notifyIcon1.ShowBalloonTip(3000);
             }
         }
-
         private void deleteButton_Click(object sender, EventArgs e)
         {
             User u = new User();
