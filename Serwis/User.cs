@@ -55,10 +55,6 @@ namespace Serwis
         {
             return pe.Users.Find(id).place_id;
         }
-        private string getAddress(int id)
-        {
-            return pe.Places.Find(id).address;
-        }
 
         public bool add(string username, string password, int access_level, string place)
         {
@@ -123,8 +119,42 @@ namespace Serwis
         {
             Users u = new Users();
             u = pe.Users.Find(id);
-            object[] table = { u.name, this.getAddress(u.place_id), u.access_level};
+            object[] table = { u.name, new Place().getAddress(u.place_id), u.access_level};
             return table;
+        }
+        public bool edit(int id, string name, string password, int type, string place)
+        {
+            var user = pe.Users.Find(id);
+            user.name = name;
+            user.password = this.generateSha1(password);
+            user.access_level = Convert.ToByte(type);
+            user.place_id = new Place().getPlaceId(place);
+            try
+            {
+                pe.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool edit(int id, string name, int type, string place)
+        {
+            var user = pe.Users.Find(id);
+            user.name = name;
+            user.access_level = Convert.ToByte(type);
+            user.place_id = new Place().getPlaceId(place);
+            try
+            {
+                pe.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
