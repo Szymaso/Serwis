@@ -17,5 +17,12 @@ namespace Serwis
         {
             return pe.Places.FirstOrDefault(p => p.address == address).id;
         }
+        public bool add(string address)
+        {
+            Places place = new Serwis.Places { address = address };
+            pe.Places.Add(place);
+            try { pe.SaveChanges(); return true; }
+            catch { return false; }
+        }
     }
 }
