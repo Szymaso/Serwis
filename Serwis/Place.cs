@@ -26,12 +26,19 @@ namespace Serwis
         }
         public Array list()
         {
-            return pe.Places.ToArray();
+            return pe.Places.OrderBy(p => p.id).ToArray();
         }
         public bool edit(int id, string address)
         {
             var place = pe.Places.Find(id);
             place.address = address;
+            try { pe.SaveChanges(); return true; }
+            catch { return false; }
+        }
+        public bool delete(int id)
+        {
+            var place = pe.Places.Find(id);
+            pe.Places.Remove(place);
             try { pe.SaveChanges(); return true; }
             catch { return false; }
         }

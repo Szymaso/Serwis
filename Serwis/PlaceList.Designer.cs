@@ -44,6 +44,7 @@
             this.placeListGrid.Size = new System.Drawing.Size(404, 364);
             this.placeListGrid.TabIndex = 0;
             this.placeListGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeListGrid_CellEndEdit);
+            this.placeListGrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.placeListGrid_KeyUp);
             // 
             // PlaceList
             // 

@@ -17,6 +17,7 @@ namespace Serwis
         {
             InitializeComponent();
             this.home = h;
+            AcceptButton = this.addButton;
         }
 
         private void addButton_Click(object sender, EventArgs e)

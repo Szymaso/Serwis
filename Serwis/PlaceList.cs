@@ -59,5 +59,38 @@ namespace Serwis
                 this.display();
             }
         }
+
+        private void placeListGrid_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                var confirmResult = MessageBox.Show("Jesteś pewien, że chcesz usunąć miejsce " + placeListGrid.CurrentRow.Cells[1].Value.ToString() + "?",
+                                     "Potwierdź usuwanie",
+                                     MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    Place p = new Place();
+                    if(p.delete(Convert.ToInt32(placeListGrid.CurrentRow.Cells[0].Value)))
+                    {
+                        home.notifyIcon1.Icon = SystemIcons.Application;
+                        home.notifyIcon1.BalloonTipText = "Usunięto miejsce " + placeListGrid.CurrentRow.Cells[1].Value.ToString();
+                        home.notifyIcon1.BalloonTipTitle = "Usuwanie miejsca";
+                        home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                        home.notifyIcon1.Visible = true;
+                        home.notifyIcon1.ShowBalloonTip(3000);
+                        this.display();
+                    }
+                    else
+                    {
+                        home.notifyIcon1.Icon = SystemIcons.Exclamation;
+                        home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas usuwania miejsca";
+                        home.notifyIcon1.BalloonTipTitle = "Usuwanie miejsca";
+                        home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
+                        home.notifyIcon1.Visible = true;
+                        home.notifyIcon1.ShowBalloonTip(3000);
+                    }
+                }
+            }
+        }
     }
 }
