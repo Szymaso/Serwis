@@ -47,6 +47,7 @@
             this.userListGrid.RowTemplate.Height = 24;
             this.userListGrid.Size = new System.Drawing.Size(363, 297);
             this.userListGrid.TabIndex = 0;
+            this.userListGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.userListGrid_CellMouseDoubleClick);
             // 
             // projektEntitiesBindingSource
             // 

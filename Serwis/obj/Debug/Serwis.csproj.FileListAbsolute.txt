@@ -14,3 +14,4 @@ D:\C#\Serwis\Serwis\obj\Debug\Serwis.exe
 D:\C#\Serwis\Serwis\obj\Debug\Serwis.pdb
 D:\C#\Serwis\Serwis\obj\Debug\Serwis.UserAdd.resources
 D:\C#\Serwis\Serwis\obj\Debug\Serwis.UserList.resources
+D:\C#\Serwis\Serwis\obj\Debug\Serwis.UserEdit.resources

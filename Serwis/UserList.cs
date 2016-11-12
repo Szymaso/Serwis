@@ -28,7 +28,7 @@ namespace Serwis
             {
                 userListGrid.Rows[i].Cells[8].Value = pe.Places.Find(Convert.ToInt32(userListGrid.Rows[i].Cells[6].Value)).address;
             }
-            userListGrid.Columns[0].Visible = false;
+            userListGrid.Columns[0].HeaderText = "ID";
             userListGrid.Columns[1].HeaderText = "Nazwa";
             userListGrid.Columns[2].Visible = false;
             userListGrid.Columns[3].HeaderText = "Utworzony";
@@ -38,6 +38,12 @@ namespace Serwis
             userListGrid.Columns[7].Visible = false;
             userListGrid.Columns[8].HeaderText = "Miejsce";
 
+        }
+
+        private void userListGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            UserEdit u = new UserEdit(Convert.ToInt32(userListGrid.CurrentRow.Cells["id"].Value), home, this);
+            u.Show();
         }
     }
 }

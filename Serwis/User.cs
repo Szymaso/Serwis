@@ -15,7 +15,6 @@ namespace Serwis
         ProjektEntities pe = new ProjektEntities();
 
         private static int currentUserId = 0;
-
         public bool login(string username, string password)
         {
             try
@@ -32,7 +31,7 @@ namespace Serwis
         }
 
         // Generate SHA1 hash from string
-        public string generateSha1(string password)
+        private string generateSha1(string password)
         {
             SHA1 sha1 = SHA1.Create();
             byte[] hashBytes = sha1.ComputeHash(Encoding.UTF8.GetBytes(password));
@@ -52,9 +51,13 @@ namespace Serwis
             return true;
         }
 
-        public int from()
+        private int from(int id)
         {
-            return pe.Users.Find(currentUserId).place_id;
+            return pe.Users.Find(id).place_id;
+        }
+        private string getAddress(int id)
+        {
+            return pe.Places.Find(id).address;
         }
 
         public bool add(string username, string password, int access_level, string place)
@@ -73,7 +76,7 @@ namespace Serwis
             return true;
         }
 
-        public static DataTable ToDataTable<T>(List<T> items)
+        private static DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
 
@@ -105,9 +108,8 @@ namespace Serwis
             if (isSuperadmin())
                 list = pe.Users.ToList();
             else
-                list = pe.Users.Where(u => u.place_id == from()).ToList();
+                list = pe.Users.Where(u => u.place_id == from(currentUserId)).ToList();
             DataTable table = ToDataTable<Users>(list);
-            //table.Columns.Remove("password");
             table.Columns[0].ColumnName = "id";
             table.Columns[1].ColumnName = "Nazwa użytkownika";
             table.Columns[2].ColumnName = "Data utworzenia";
@@ -116,11 +118,13 @@ namespace Serwis
             table.Columns[5].ColumnName = "Miejsce";
             table.Columns.Add();
             return table;
-            
-           
-            //users.CopyToDataTable()
-            
-            //return table;
+        }
+        public object[] getData(int id)
+        {
+            Users u = new Users();
+            u = pe.Users.Find(id);
+            object[] table = { u.name, this.getAddress(u.place_id), u.access_level};
+            return table;
         }
     }
 }
