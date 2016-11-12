@@ -24,5 +24,16 @@ namespace Serwis
             try { pe.SaveChanges(); return true; }
             catch { return false; }
         }
+        public Array list()
+        {
+            return pe.Places.ToArray();
+        }
+        public bool edit(int id, string address)
+        {
+            var place = pe.Places.Find(id);
+            place.address = address;
+            try { pe.SaveChanges(); return true; }
+            catch { return false; }
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace Serwis
             {
                 this.addNewToolStripMenuItem.Visible = true;
                 this.listUsersToolStripMenuItem.Visible = true;
+                this.miejscaToolStripMenuItem.Visible = true;
             }
         }
 
@@ -42,10 +43,18 @@ namespace Serwis
             homePanel.Controls.Clear();
             homePanel.Controls.Add(list);
         }
-
-        private void dodajMiejsceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dodajToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new PlaceAdd(this).Show();
+        }
+
+        private void listaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            PlaceList list = new PlaceList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
         }
     }
 }
