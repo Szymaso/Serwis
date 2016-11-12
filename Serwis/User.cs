@@ -43,6 +43,16 @@ namespace Serwis
             }
             return sb.ToString();
         }
+        public int getCurrentUserId()
+        {
+            return currentUserId;
+        }
+        public bool isAdmin()
+        {
+            if (pe.Users.Find(currentUserId).access_level == 0)
+                return false;
+            return true;
+        }
 
         public bool isSuperadmin()
         {
@@ -51,7 +61,7 @@ namespace Serwis
             return true;
         }
 
-        private int from(int id)
+        public int from(int id)
         {
             return pe.Users.Find(id).place_id;
         }
@@ -100,11 +110,13 @@ namespace Serwis
         public DataTable listUsers()
         {
             List<Users> list;
-
             if (isSuperadmin())
                 list = pe.Users.ToList();
             else
-                list = pe.Users.Where(u => u.place_id == from(currentUserId)).ToList();
+            {
+                int placeId = from(currentUserId);
+                list = pe.Users.Where(u => u.place_id == placeId).ToList();
+            }
             DataTable table = ToDataTable<Users>(list);
             table.Columns[0].ColumnName = "id";
             table.Columns[1].ColumnName = "Nazwa użytkownika";

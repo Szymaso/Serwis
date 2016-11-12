@@ -23,8 +23,17 @@ namespace Serwis
                 user_type.Items.Remove("Superadministrator");
             user_type.Text = user_type.Items[0].ToString();
             ProjektEntities pe = new ProjektEntities();
-            foreach(var place in pe.Places)
-                this.placeBox.Items.Add(place.address);
+            if (u.isAdmin())
+            {
+                this.placeBox.Items.Add(new Place().getAddress(u.from(u.getCurrentUserId())));
+                this.placeBox.Text = this.placeBox.Items[0].ToString();
+            }
+            if (u.isSuperadmin())
+            {
+                this.placeBox.Items.Remove(new Place().getAddress(u.from(u.getCurrentUserId())));
+                foreach (var place in pe.Places)
+                    this.placeBox.Items.Add(place.address);
+            }
         }
 
         private void addUser_button_Click(object sender, EventArgs e)

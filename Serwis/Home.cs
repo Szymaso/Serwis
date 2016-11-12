@@ -23,10 +23,12 @@ namespace Serwis
         private void Home_Activated(object sender, EventArgs e)
         {
             User u = new User();
+            if(u.isAdmin())
+            {
+                this.userToolStripMenuItem.Visible = true;
+            }
             if (u.isSuperadmin())
             {
-                this.addNewToolStripMenuItem.Visible = true;
-                this.listUsersToolStripMenuItem.Visible = true;
                 this.miejscaToolStripMenuItem.Visible = true;
             }
         }

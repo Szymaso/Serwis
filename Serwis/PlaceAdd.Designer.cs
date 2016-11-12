@@ -36,9 +36,9 @@
             // address
             // 
             this.address.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.address.Location = new System.Drawing.Point(86, 13);
+            this.address.Location = new System.Drawing.Point(100, 13);
             this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(348, 27);
+            this.address.Size = new System.Drawing.Size(334, 27);
             this.address.TabIndex = 0;
             // 
             // label1
