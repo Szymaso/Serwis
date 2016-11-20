@@ -41,6 +41,8 @@
             this.homePanel = new System.Windows.Forms.Panel();
             this.klienciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sprzętToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,6 +129,9 @@
             // 
             // klienciToolStripMenuItem
             // 
+            this.klienciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nowyToolStripMenuItem,
+            this.listaToolStripMenuItem1});
             this.klienciToolStripMenuItem.Name = "klienciToolStripMenuItem";
             this.klienciToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.klienciToolStripMenuItem.Text = "Klienci";
@@ -136,6 +141,19 @@
             this.sprzętToolStripMenuItem.Name = "sprzętToolStripMenuItem";
             this.sprzętToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.sprzętToolStripMenuItem.Text = "Sprzęt";
+            // 
+            // nowyToolStripMenuItem
+            // 
+            this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
+            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.nowyToolStripMenuItem.Text = "Nowy";
+            this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
+            // 
+            // listaToolStripMenuItem1
+            // 
+            this.listaToolStripMenuItem1.Name = "listaToolStripMenuItem1";
+            this.listaToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.listaToolStripMenuItem1.Text = "Lista";
             // 
             // Home
             // 
@@ -169,6 +187,8 @@
         private System.Windows.Forms.ToolStripMenuItem listaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem klienciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sprzętToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nowyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaToolStripMenuItem1;
     }
 }
 

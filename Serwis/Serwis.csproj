@@ -57,6 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddClient.Designer.cs">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client.cs" />
     <Compile Include="Clients.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
@@ -69,6 +76,7 @@
     <Compile Include="DeviceTypes.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FirmClient.cs" />
     <Compile Include="Firms.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
@@ -78,6 +86,7 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="IndividualClient.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +151,9 @@
     <Compile Include="Users.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddClient.resx">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>

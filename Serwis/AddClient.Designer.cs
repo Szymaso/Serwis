@@ -58,7 +58,8 @@
             this.client_type.Location = new System.Drawing.Point(226, 18);
             this.client_type.Name = "client_type";
             this.client_type.Size = new System.Drawing.Size(228, 24);
-            this.client_type.TabIndex = 29;
+            this.client_type.TabIndex = 24;
+            this.client_type.TextChanged += new System.EventHandler(this.client_type_TextChanged);
             // 
             // label3
             // 
@@ -78,9 +79,8 @@
             this.client_surname.Location = new System.Drawing.Point(226, 77);
             this.client_surname.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.client_surname.Name = "client_surname";
-            this.client_surname.PasswordChar = '•';
             this.client_surname.Size = new System.Drawing.Size(228, 26);
-            this.client_surname.TabIndex = 27;
+            this.client_surname.TabIndex = 26;
             // 
             // label2
             // 
@@ -123,6 +123,7 @@
             this.addClient_button.TabIndex = 23;
             this.addClient_button.Text = "Dodaj klienta";
             this.addClient_button.UseVisualStyleBackColor = true;
+            this.addClient_button.Click += new System.EventHandler(this.addClient_button_Click);
             // 
             // client_city
             // 
@@ -131,7 +132,6 @@
             this.client_city.Location = new System.Drawing.Point(226, 107);
             this.client_city.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.client_city.Name = "client_city";
-            this.client_city.PasswordChar = '•';
             this.client_city.Size = new System.Drawing.Size(228, 26);
             this.client_city.TabIndex = 33;
             // 
@@ -153,7 +153,6 @@
             this.client_street.Location = new System.Drawing.Point(226, 137);
             this.client_street.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.client_street.Name = "client_street";
-            this.client_street.PasswordChar = '•';
             this.client_street.Size = new System.Drawing.Size(228, 26);
             this.client_street.TabIndex = 35;
             // 
@@ -175,7 +174,6 @@
             this.client_houseNo.Location = new System.Drawing.Point(226, 167);
             this.client_houseNo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.client_houseNo.Name = "client_houseNo";
-            this.client_houseNo.PasswordChar = '•';
             this.client_houseNo.Size = new System.Drawing.Size(228, 26);
             this.client_houseNo.TabIndex = 37;
             // 
@@ -197,7 +195,6 @@
             this.client_locumNo.Location = new System.Drawing.Point(226, 197);
             this.client_locumNo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.client_locumNo.Name = "client_locumNo";
-            this.client_locumNo.PasswordChar = '•';
             this.client_locumNo.Size = new System.Drawing.Size(228, 26);
             this.client_locumNo.TabIndex = 39;
             // 
@@ -219,7 +216,6 @@
             this.client_phoneNo.Location = new System.Drawing.Point(226, 227);
             this.client_phoneNo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.client_phoneNo.Name = "client_phoneNo";
-            this.client_phoneNo.PasswordChar = '•';
             this.client_phoneNo.Size = new System.Drawing.Size(228, 26);
             this.client_phoneNo.TabIndex = 41;
             // 
@@ -241,7 +237,6 @@
             this.client_email.Location = new System.Drawing.Point(226, 257);
             this.client_email.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.client_email.Name = "client_email";
-            this.client_email.PasswordChar = '•';
             this.client_email.Size = new System.Drawing.Size(228, 26);
             this.client_email.TabIndex = 43;
             // 

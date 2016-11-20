@@ -58,5 +58,10 @@ namespace Serwis
             homePanel.Controls.Clear();
             homePanel.Controls.Add(list);
         }
+
+        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AddClient(this).Show();
+        }
     }
 }
