@@ -63,5 +63,13 @@ namespace Serwis
         {
             new AddClient(this).Show();
         }
+
+        private void listaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FirmClientList list = new FirmClientList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
+        }
     }
 }

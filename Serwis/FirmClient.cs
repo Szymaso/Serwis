@@ -23,5 +23,24 @@ namespace Serwis
                 return false;
             }            
         }
+        public Array list()
+        {
+            return pe.Firms.OrderBy(f => f.Id).ToArray();
+        }
+        /*
+         * int column
+         *      1 - name
+         *      2 - city
+         *      3 - street
+         *      4 - houseNo
+         *      5 - locumNo
+         *      6 - phone
+         *      7 - mail
+         *      8 - nip
+         */
+        public bool edit(int column, string value)
+        {
+
+        }
     }
 }

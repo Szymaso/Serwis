@@ -43,6 +43,7 @@
             this.sprzętToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaIndywidualnychToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,7 +132,8 @@
             // 
             this.klienciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nowyToolStripMenuItem,
-            this.listaToolStripMenuItem1});
+            this.listaToolStripMenuItem1,
+            this.listaIndywidualnychToolStripMenuItem});
             this.klienciToolStripMenuItem.Name = "klienciToolStripMenuItem";
             this.klienciToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.klienciToolStripMenuItem.Text = "Klienci";
@@ -152,8 +154,15 @@
             // listaToolStripMenuItem1
             // 
             this.listaToolStripMenuItem1.Name = "listaToolStripMenuItem1";
-            this.listaToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
-            this.listaToolStripMenuItem1.Text = "Lista";
+            this.listaToolStripMenuItem1.Size = new System.Drawing.Size(220, 26);
+            this.listaToolStripMenuItem1.Text = "Lista firm";
+            this.listaToolStripMenuItem1.Click += new System.EventHandler(this.listaToolStripMenuItem1_Click);
+            // 
+            // listaIndywidualnychToolStripMenuItem
+            // 
+            this.listaIndywidualnychToolStripMenuItem.Name = "listaIndywidualnychToolStripMenuItem";
+            this.listaIndywidualnychToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.listaIndywidualnychToolStripMenuItem.Text = "Lista indywidualnych";
             // 
             // Home
             // 
@@ -189,6 +198,7 @@
         private System.Windows.Forms.ToolStripMenuItem sprzętToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem listaIndywidualnychToolStripMenuItem;
     }
 }
 

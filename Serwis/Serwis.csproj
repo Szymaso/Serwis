@@ -77,6 +77,12 @@
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FirmClient.cs" />
+    <Compile Include="FirmClientList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FirmClientList.Designer.cs">
+      <DependentUpon>FirmClientList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Firms.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
@@ -153,6 +159,9 @@
     </Compile>
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FirmClientList.resx">
+      <DependentUpon>FirmClientList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
