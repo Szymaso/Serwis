@@ -8,7 +8,6 @@ namespace Serwis
 {
     abstract class Client
     {
-        protected ProjektEntities pe = new ProjektEntities();
         abstract public bool addClient(string name, string surname, string city, string street, string houseNo, string locumNo, string phoneNo, string mail);
     }
 }

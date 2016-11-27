@@ -12,12 +12,15 @@ namespace Serwis
         {
             try
             {
-                Firms firm = new Firms { name = name, nip = surname, city = city,street = street, house_no = houseNo, locum_no = locumNo, phone = phoneNo, mail = mail, created_at = DateTime.Now, updated_at = DateTime.Now };
-                pe.Firms.Add(firm);
-                pe.SaveChanges();
-                return true;
+                using (ProjektEntities pe = new ProjektEntities())
+                {
+                    Firms firm = new Firms { name = name, nip = surname, city = city, street = street, house_no = houseNo, locum_no = locumNo, phone = phoneNo, mail = mail, created_at = DateTime.Now, updated_at = DateTime.Now };
+                    pe.Firms.Add(firm);
+                    pe.SaveChanges();
+                    return true;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.InnerException.ToString());
                 return false;
@@ -25,7 +28,10 @@ namespace Serwis
         }
         public Array list()
         {
-            return pe.Firms.OrderBy(f => f.Id).ToArray();
+            using (ProjektEntities pe = new ProjektEntities())
+            {
+                return pe.Firms.OrderBy(f => f.Id).ToArray();
+            }
         }
         /*
          * int column
@@ -38,9 +44,49 @@ namespace Serwis
          *      7 - mail
          *      8 - nip
          */
-        public bool edit(int column, string value)
+        public bool edit(int column, int id, string value)
         {
-
+            try
+            {
+                using(ProjektEntities pe = new ProjektEntities())
+                {
+                    var firm = pe.Firms.Find(id);
+                    switch(column)
+                    {
+                        case 1: firm.name = value; break;
+                        case 2: firm.city = value; break;
+                        case 3: firm.street = value; break;
+                        case 4: firm.house_no = value; break;
+                        case 5: firm.locum_no = value; break;
+                        case 6: firm.phone = value; break;
+                        case 7: firm.mail = value; break;
+                        case 8: firm.nip = value; break;
+                    }
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool delete(int id)
+        {
+            try
+            {
+                using(ProjektEntities pe = new ProjektEntities())
+                {
+                    var firm = pe.Firms.Find(id);
+                    pe.Firms.Remove(firm);
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

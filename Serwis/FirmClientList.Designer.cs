@@ -44,6 +44,8 @@
             this.firmClientGrid.RowTemplate.Height = 24;
             this.firmClientGrid.Size = new System.Drawing.Size(728, 457);
             this.firmClientGrid.TabIndex = 0;
+            this.firmClientGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.firmClientGrid_CellEndEdit);
+            this.firmClientGrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.firmClientGrid_KeyUp);
             // 
             // FirmClientList
             // 
