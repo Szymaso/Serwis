@@ -44,9 +44,9 @@
             this.sprzętToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNowyTypSprzętuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaTypówSprzętuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.homePanel = new System.Windows.Forms.Panel();
-            this.listaTypówSprzętuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // menu
             // 
@@ -174,6 +174,14 @@
             this.dodajNowyTypSprzętuToolStripMenuItem.Visible = false;
             this.dodajNowyTypSprzętuToolStripMenuItem.Click += new System.EventHandler(this.dodajNowyTypSprzętuToolStripMenuItem_Click);
             // 
+            // listaTypówSprzętuToolStripMenuItem
+            // 
+            this.listaTypówSprzętuToolStripMenuItem.Name = "listaTypówSprzętuToolStripMenuItem";
+            this.listaTypówSprzętuToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.listaTypówSprzętuToolStripMenuItem.Text = "Lista typów sprzętu";
+            this.listaTypówSprzętuToolStripMenuItem.Visible = false;
+            this.listaTypówSprzętuToolStripMenuItem.Click += new System.EventHandler(this.listaTypówSprzętuToolStripMenuItem_Click);
+            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Text = "notifyIcon1";
@@ -186,14 +194,6 @@
             this.homePanel.Name = "homePanel";
             this.homePanel.Size = new System.Drawing.Size(1196, 419);
             this.homePanel.TabIndex = 2;
-            // 
-            // listaTypówSprzętuToolStripMenuItem
-            // 
-            this.listaTypówSprzętuToolStripMenuItem.Name = "listaTypówSprzętuToolStripMenuItem";
-            this.listaTypówSprzętuToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
-            this.listaTypówSprzętuToolStripMenuItem.Text = "Lista typów sprzętu";
-            this.listaTypówSprzętuToolStripMenuItem.Visible = false;
-            this.listaTypówSprzętuToolStripMenuItem.Click += new System.EventHandler(this.listaTypówSprzętuToolStripMenuItem_Click);
             // 
             // Home
             // 

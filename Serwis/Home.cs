@@ -82,11 +82,6 @@ namespace Serwis
             homePanel.Controls.Add(list);
         }
 
-        private void dodajToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dodajNowyTypSprzętuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new DeviceTypeAdd(this).Show();
@@ -98,6 +93,11 @@ namespace Serwis
             list.Dock = DockStyle.Fill;
             homePanel.Controls.Clear();
             homePanel.Controls.Add(list);
+        }
+
+        private void dodajToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new DeviceCardAdd(this).Show();
         }
     }
 }

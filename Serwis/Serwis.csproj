@@ -63,11 +63,12 @@
     <Compile Include="AddClient.Designer.cs">
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddDeviceCard.cs">
+    <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="DeviceCardAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDeviceCard.Designer.cs">
-      <DependentUpon>AddDeviceCard.cs</DependentUpon>
+    <Compile Include="DeviceCardAdd.Designer.cs">
+      <DependentUpon>DeviceCardAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="DeviceType.cs" />
     <Compile Include="DeviceTypeAdd.cs">
@@ -185,8 +186,8 @@
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddDeviceCard.resx">
-      <DependentUpon>AddDeviceCard.cs</DependentUpon>
+    <EmbeddedResource Include="DeviceCardAdd.resx">
+      <DependentUpon>DeviceCardAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceTypeAdd.resx">
       <DependentUpon>DeviceTypeAdd.cs</DependentUpon>
