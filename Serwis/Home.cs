@@ -71,5 +71,13 @@ namespace Serwis
             homePanel.Controls.Clear();
             homePanel.Controls.Add(list);
         }
+
+        private void listaIndywidualnychToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IndividualClientList list = new IndividualClientList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
+        }
     }
 }

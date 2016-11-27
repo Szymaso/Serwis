@@ -37,13 +37,13 @@
             this.miejscaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.homePanel = new System.Windows.Forms.Panel();
             this.klienciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sprzętToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listaIndywidualnychToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sprzętToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.homePanel = new System.Windows.Forms.Panel();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,19 +115,6 @@
             this.listaToolStripMenuItem.Text = "Lista";
             this.listaToolStripMenuItem.Click += new System.EventHandler(this.listaToolStripMenuItem_Click);
             // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
-            // homePanel
-            // 
-            this.homePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homePanel.Location = new System.Drawing.Point(0, 28);
-            this.homePanel.Name = "homePanel";
-            this.homePanel.Size = new System.Drawing.Size(1196, 419);
-            this.homePanel.TabIndex = 2;
-            // 
             // klienciToolStripMenuItem
             // 
             this.klienciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -138,16 +125,10 @@
             this.klienciToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.klienciToolStripMenuItem.Text = "Klienci";
             // 
-            // sprzętToolStripMenuItem
-            // 
-            this.sprzętToolStripMenuItem.Name = "sprzętToolStripMenuItem";
-            this.sprzętToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
-            this.sprzętToolStripMenuItem.Text = "Sprzęt";
-            // 
             // nowyToolStripMenuItem
             // 
             this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
-            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.nowyToolStripMenuItem.Text = "Nowy";
             this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
             // 
@@ -163,6 +144,26 @@
             this.listaIndywidualnychToolStripMenuItem.Name = "listaIndywidualnychToolStripMenuItem";
             this.listaIndywidualnychToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.listaIndywidualnychToolStripMenuItem.Text = "Lista indywidualnych";
+            this.listaIndywidualnychToolStripMenuItem.Click += new System.EventHandler(this.listaIndywidualnychToolStripMenuItem_Click);
+            // 
+            // sprzętToolStripMenuItem
+            // 
+            this.sprzętToolStripMenuItem.Name = "sprzętToolStripMenuItem";
+            this.sprzętToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.sprzętToolStripMenuItem.Text = "Sprzęt";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // homePanel
+            // 
+            this.homePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homePanel.Location = new System.Drawing.Point(0, 28);
+            this.homePanel.Name = "homePanel";
+            this.homePanel.Size = new System.Drawing.Size(1196, 419);
+            this.homePanel.TabIndex = 2;
             // 
             // Home
             // 
