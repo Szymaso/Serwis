@@ -63,6 +63,19 @@
     <Compile Include="AddClient.Designer.cs">
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddDeviceCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDeviceCard.Designer.cs">
+      <DependentUpon>AddDeviceCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceType.cs" />
+    <Compile Include="DeviceTypeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceTypeAdd.Designer.cs">
+      <DependentUpon>DeviceTypeAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="Clients.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
@@ -72,6 +85,12 @@
     </Compile>
     <Compile Include="DevicesCards.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTypeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceTypeList.Designer.cs">
+      <DependentUpon>DeviceTypeList.cs</DependentUpon>
     </Compile>
     <Compile Include="DeviceTypes.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
@@ -165,6 +184,15 @@
     </Compile>
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddDeviceCard.resx">
+      <DependentUpon>AddDeviceCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTypeAdd.resx">
+      <DependentUpon>DeviceTypeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTypeList.resx">
+      <DependentUpon>DeviceTypeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FirmClientList.resx">
       <DependentUpon>FirmClientList.cs</DependentUpon>

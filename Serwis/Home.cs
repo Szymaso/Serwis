@@ -26,6 +26,8 @@ namespace Serwis
             if(u.isAdmin())
             {
                 this.userToolStripMenuItem.Visible = true;
+                this.dodajNowyTypSprzętuToolStripMenuItem.Visible = true;
+                this.listaTypówSprzętuToolStripMenuItem.Visible = true;
             }
             if (u.isSuperadmin())
             {
@@ -75,6 +77,24 @@ namespace Serwis
         private void listaIndywidualnychToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IndividualClientList list = new IndividualClientList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
+        }
+
+        private void dodajToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dodajNowyTypSprzętuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new DeviceTypeAdd(this).Show();
+        }
+
+        private void listaTypówSprzętuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeviceTypeList list = new DeviceTypeList(this);
             list.Dock = DockStyle.Fill;
             homePanel.Controls.Clear();
             homePanel.Controls.Add(list);
