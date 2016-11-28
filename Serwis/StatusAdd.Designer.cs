@@ -42,6 +42,7 @@
             this.addButton.TabIndex = 43;
             this.addButton.Text = "Dodaj status";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // label1
             // 
