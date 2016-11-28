@@ -49,24 +49,31 @@ namespace Serwis
                 MessageBox.Show("Wypełnij wszystkie pola formularza");
             else
             {
-                if(new DeviceCard().add(Convert.ToBoolean(this.isFirm.Checked), this.model.Text,this.manufacturer.Text,this.serialNo.Text, ((ComboBoxItem)this.deviceType.SelectedItem).HiddenValue, ((ComboBoxItem)this.status.SelectedItem).HiddenValue, ((ComboBoxItem)this.name.SelectedItem).HiddenValue))
+                try
                 {
-                    home.notifyIcon1.Icon = SystemIcons.Application;
-                    home.notifyIcon1.BalloonTipText = "Dodano urządzenie " + manufacturer.Text + "  " + model.Text;
-                    home.notifyIcon1.BalloonTipTitle = "Dodawanie urządzenia";
-                    home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
-                    home.notifyIcon1.Visible = true;
-                    home.notifyIcon1.ShowBalloonTip(3000);
-                    this.Close();
+                    if (new DeviceCard().add(Convert.ToBoolean(this.isFirm.Checked), this.model.Text, this.manufacturer.Text, this.serialNo.Text, ((ComboBoxItem)this.deviceType.SelectedItem).HiddenValue, ((ComboBoxItem)this.status.SelectedItem).HiddenValue, ((ComboBoxItem)this.name.SelectedItem).HiddenValue))
+                    {
+                        home.notifyIcon1.Icon = SystemIcons.Application;
+                        home.notifyIcon1.BalloonTipText = "Dodano urządzenie " + manufacturer.Text + "  " + model.Text;
+                        home.notifyIcon1.BalloonTipTitle = "Dodawanie urządzenia";
+                        home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                        home.notifyIcon1.Visible = true;
+                        home.notifyIcon1.ShowBalloonTip(3000);
+                        this.Close();
+                    }
+                    else
+                    {
+                        home.notifyIcon1.Icon = SystemIcons.Exclamation;
+                        home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas dodawania urządzenia. Sprawdź poprawność wprowadzanych danych i spróbuj ponownie";
+                        home.notifyIcon1.BalloonTipTitle = "Dodawanie urządzenia";
+                        home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
+                        home.notifyIcon1.Visible = true;
+                        home.notifyIcon1.ShowBalloonTip(3000);
+                    }
                 }
-                else
+                catch(NullReferenceException)
                 {
-                    home.notifyIcon1.Icon = SystemIcons.Exclamation;
-                    home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas dodawania urządzenia. Sprawdź poprawność wprowadzanych danych i spróbuj ponownie";
-                    home.notifyIcon1.BalloonTipTitle = "Dodawanie urządzenia";
-                    home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
-                    home.notifyIcon1.Visible = true;
-                    home.notifyIcon1.ShowBalloonTip(3000);
+                    MessageBox.Show("Wybierz prawidłowe elementy z list rozwijanych");
                 }
         }
 
