@@ -21,6 +21,8 @@ namespace Serwis
                 this.deviceType.Items.Add(new ComboBoxItem(type.type, type.Id));
             foreach (var client in new ProjektEntities().Clients)
                 this.name.Items.Add(new ComboBoxItem(client.name.ToString() + " " + client.surname.ToString(), client.Id));
+            foreach (var status in new ProjektEntities().Statuses)
+                this.status.Items.Add(new ComboBoxItem(status.name.ToString(), status.Id));
         }
         private void isFirm_CheckedChanged(object sender, EventArgs e)
         {
@@ -43,11 +45,11 @@ namespace Serwis
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(this.model.Text) || String.IsNullOrEmpty(this.manufacturer.Text) || String.IsNullOrEmpty(this.serialNo.Text) || String.IsNullOrEmpty(this.deviceType.Text) || String.IsNullOrEmpty(this.name.Text))
+            if(String.IsNullOrEmpty(this.model.Text) || String.IsNullOrEmpty(this.manufacturer.Text) || String.IsNullOrEmpty(this.serialNo.Text) || String.IsNullOrEmpty(this.deviceType.Text) || String.IsNullOrEmpty(this.status.Text) || String.IsNullOrEmpty(this.name.Text))
                 MessageBox.Show("Wypełnij wszystkie pola formularza");
             else
             {
-                if(new DeviceCard().add(Convert.ToBoolean(this.isFirm.Checked), this.model.Text,this.manufacturer.Text,this.serialNo.Text, ((ComboBoxItem)this.deviceType.SelectedItem).HiddenValue, ((ComboBoxItem)this.name.SelectedItem).HiddenValue))
+                if(new DeviceCard().add(Convert.ToBoolean(this.isFirm.Checked), this.model.Text,this.manufacturer.Text,this.serialNo.Text, ((ComboBoxItem)this.deviceType.SelectedItem).HiddenValue, ((ComboBoxItem)this.status.SelectedItem).HiddenValue, ((ComboBoxItem)this.name.SelectedItem).HiddenValue))
                 {
                     home.notifyIcon1.Icon = SystemIcons.Application;
                     home.notifyIcon1.BalloonTipText = "Dodano urządzenie " + manufacturer.Text + "  " + model.Text;

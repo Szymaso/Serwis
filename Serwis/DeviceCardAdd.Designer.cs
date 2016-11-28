@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.model = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.deviceType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.serialNo = new System.Windows.Forms.TextBox();
@@ -41,14 +43,16 @@
             this.name = new System.Windows.Forms.ComboBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.model = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.status = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.status);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.model);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.deviceType);
@@ -59,10 +63,28 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(418, 154);
+            this.groupBox1.Size = new System.Drawing.Size(418, 180);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane urządzenia";
+            // 
+            // model
+            // 
+            this.model.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.model.Location = new System.Drawing.Point(143, 45);
+            this.model.Name = "model";
+            this.model.Size = new System.Drawing.Size(269, 26);
+            this.model.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(7, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Model";
             // 
             // deviceType
             // 
@@ -126,7 +148,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.name);
             this.groupBox2.Controls.Add(this.nameLabel);
-            this.groupBox2.Location = new System.Drawing.Point(13, 174);
+            this.groupBox2.Location = new System.Drawing.Point(13, 199);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(418, 86);
             this.groupBox2.TabIndex = 1;
@@ -139,7 +161,7 @@
             this.isFirm.Location = new System.Drawing.Point(143, 22);
             this.isFirm.Name = "isFirm";
             this.isFirm.Size = new System.Drawing.Size(18, 17);
-            this.isFirm.TabIndex = 8;
+            this.isFirm.TabIndex = 9;
             this.isFirm.UseVisualStyleBackColor = true;
             this.isFirm.CheckedChanged += new System.EventHandler(this.isFirm_CheckedChanged);
             // 
@@ -161,7 +183,7 @@
             this.name.Location = new System.Drawing.Point(143, 45);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(269, 24);
-            this.name.TabIndex = 9;
+            this.name.TabIndex = 10;
             // 
             // nameLabel
             // 
@@ -175,7 +197,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 267);
+            this.button1.Location = new System.Drawing.Point(13, 292);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(418, 48);
             this.button1.TabIndex = 2;
@@ -183,29 +205,31 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // model
+            // status
             // 
-            this.model.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.model.Location = new System.Drawing.Point(143, 45);
-            this.model.Name = "model";
-            this.model.Size = new System.Drawing.Size(269, 26);
-            this.model.TabIndex = 2;
+            this.status.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.status.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.status.FormattingEnabled = true;
+            this.status.Location = new System.Drawing.Point(143, 138);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(269, 24);
+            this.status.TabIndex = 8;
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(7, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Model";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(7, 141);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Status";
             // 
             // DeviceCardAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 349);
+            this.ClientSize = new System.Drawing.Size(457, 366);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -237,5 +261,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox model;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox status;
+        private System.Windows.Forms.Label label5;
     }
 }
