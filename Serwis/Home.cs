@@ -28,6 +28,8 @@ namespace Serwis
                 this.userToolStripMenuItem.Visible = true;
                 this.dodajNowyTypSprzętuToolStripMenuItem.Visible = true;
                 this.listaTypówSprzętuToolStripMenuItem.Visible = true;
+                this.dodajStatusToolStripMenuItem.Visible = true;
+                this.listaaStatusówToolStripMenuItem.Visible = true;
             }
             if (u.isSuperadmin())
             {
@@ -98,6 +100,11 @@ namespace Serwis
         private void dodajToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new DeviceCardAdd(this).Show();
+        }
+
+        private void dodajStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new StatusAdd(this).Show();
         }
     }
 }

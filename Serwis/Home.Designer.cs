@@ -45,6 +45,8 @@
             this.dodajToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNowyTypSprzętuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaTypówSprzętuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaaStatusówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.homePanel = new System.Windows.Forms.Panel();
             this.menu.SuspendLayout();
@@ -54,7 +56,7 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
             // 
             // menu
             // 
@@ -154,7 +156,9 @@
             this.sprzętToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajToolStripMenuItem1,
             this.dodajNowyTypSprzętuToolStripMenuItem,
-            this.listaTypówSprzętuToolStripMenuItem});
+            this.listaTypówSprzętuToolStripMenuItem,
+            this.dodajStatusToolStripMenuItem,
+            this.listaaStatusówToolStripMenuItem});
             this.sprzętToolStripMenuItem.Name = "sprzętToolStripMenuItem";
             this.sprzętToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.sprzętToolStripMenuItem.Text = "Sprzęt";
@@ -181,6 +185,21 @@
             this.listaTypówSprzętuToolStripMenuItem.Text = "Lista typów sprzętu";
             this.listaTypówSprzętuToolStripMenuItem.Visible = false;
             this.listaTypówSprzętuToolStripMenuItem.Click += new System.EventHandler(this.listaTypówSprzętuToolStripMenuItem_Click);
+            // 
+            // dodajStatusToolStripMenuItem
+            // 
+            this.dodajStatusToolStripMenuItem.Name = "dodajStatusToolStripMenuItem";
+            this.dodajStatusToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.dodajStatusToolStripMenuItem.Text = "Dodaj status";
+            this.dodajStatusToolStripMenuItem.Visible = false;
+            this.dodajStatusToolStripMenuItem.Click += new System.EventHandler(this.dodajStatusToolStripMenuItem_Click);
+            // 
+            // listaaStatusówToolStripMenuItem
+            // 
+            this.listaaStatusówToolStripMenuItem.Name = "listaaStatusówToolStripMenuItem";
+            this.listaaStatusówToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.listaaStatusówToolStripMenuItem.Text = "Lista statusów";
+            this.listaaStatusówToolStripMenuItem.Visible = false;
             // 
             // notifyIcon1
             // 
@@ -233,6 +252,8 @@
         private System.Windows.Forms.ToolStripMenuItem dodajToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem dodajNowyTypSprzętuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaTypówSprzętuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajStatusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaaStatusówToolStripMenuItem;
     }
 }
 

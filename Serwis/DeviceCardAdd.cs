@@ -20,7 +20,7 @@ namespace Serwis
             foreach (var type in new ProjektEntities().DeviceTypes)
                 this.deviceType.Items.Add(new ComboBoxItem(type.type, type.Id));
             foreach (var client in new ProjektEntities().Clients)
-                this.name.Items.Add(client.name.ToString() + " " + client.surname.ToString());
+                this.name.Items.Add(new ComboBoxItem(client.name.ToString() + " " + client.surname.ToString(), client.Id));
         }
         private void isFirm_CheckedChanged(object sender, EventArgs e)
         {
@@ -30,15 +30,44 @@ namespace Serwis
                 this.nameLabel.Text = "Nazwa";
                 this.name.Items.Clear();
                 foreach (var firm in new ProjektEntities().Firms)
-                    this.name.Items.Add(firm.name.ToString());
+                    this.name.Items.Add(new ComboBoxItem(firm.name.ToString(), firm.Id));
             }
             else
             {
                 this.nameLabel.Text = "Imię i nazwisko";
                 this.name.Items.Clear();
                 foreach (var client in new ProjektEntities().Clients)
-                    this.name.Items.Add(client.name.ToString() + " " + client.surname.ToString());
+                    this.name.Items.Add(new ComboBoxItem(client.name.ToString() + " " + client.surname.ToString(),client.Id));
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(String.IsNullOrEmpty(this.model.Text) || String.IsNullOrEmpty(this.manufacturer.Text) || String.IsNullOrEmpty(this.serialNo.Text) || String.IsNullOrEmpty(this.deviceType.Text) || String.IsNullOrEmpty(this.name.Text))
+                MessageBox.Show("Wypełnij wszystkie pola formularza");
+            else
+            {
+                if(new DeviceCard().add(Convert.ToBoolean(this.isFirm.Checked), this.model.Text,this.manufacturer.Text,this.serialNo.Text, ((ComboBoxItem)this.deviceType.SelectedItem).HiddenValue, ((ComboBoxItem)this.name.SelectedItem).HiddenValue))
+                {
+                    home.notifyIcon1.Icon = SystemIcons.Application;
+                    home.notifyIcon1.BalloonTipText = "Dodano urządzenie " + manufacturer.Text + "  " + model.Text;
+                    home.notifyIcon1.BalloonTipTitle = "Dodawanie urządzenia";
+                    home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                    home.notifyIcon1.Visible = true;
+                    home.notifyIcon1.ShowBalloonTip(3000);
+                    this.Close();
+                }
+                else
+                {
+                    home.notifyIcon1.Icon = SystemIcons.Exclamation;
+                    home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas dodawania urządzenia. Sprawdź poprawność wprowadzanych danych i spróbuj ponownie";
+                    home.notifyIcon1.BalloonTipTitle = "Dodawanie urządzenia";
+                    home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
+                    home.notifyIcon1.Visible = true;
+                    home.notifyIcon1.ShowBalloonTip(3000);
+                }
+        }
+
         }
     }
 }

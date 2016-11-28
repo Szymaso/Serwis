@@ -35,28 +35,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.manufacturer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.model = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.isFirm = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.ComboBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.model = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.model);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.deviceType);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.serialNo);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.manufacturer);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.model);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(418, 154);
@@ -105,38 +105,20 @@
             // manufacturer
             // 
             this.manufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.manufacturer.Location = new System.Drawing.Point(143, 49);
+            this.manufacturer.Location = new System.Drawing.Point(143, 14);
             this.manufacturer.Name = "manufacturer";
             this.manufacturer.Size = new System.Drawing.Size(269, 26);
-            this.manufacturer.TabIndex = 3;
+            this.manufacturer.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(7, 53);
+            this.label2.Location = new System.Drawing.Point(7, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Producent";
-            // 
-            // model
-            // 
-            this.model.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.model.Location = new System.Drawing.Point(143, 21);
-            this.model.Name = "model";
-            this.model.Size = new System.Drawing.Size(269, 26);
-            this.model.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(7, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Model";
             // 
             // groupBox2
             // 
@@ -157,7 +139,7 @@
             this.isFirm.Location = new System.Drawing.Point(143, 22);
             this.isFirm.Name = "isFirm";
             this.isFirm.Size = new System.Drawing.Size(18, 17);
-            this.isFirm.TabIndex = 11;
+            this.isFirm.TabIndex = 8;
             this.isFirm.UseVisualStyleBackColor = true;
             this.isFirm.CheckedChanged += new System.EventHandler(this.isFirm_CheckedChanged);
             // 
@@ -199,6 +181,25 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Dodaj urządzenie";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // model
+            // 
+            this.model.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.model.Location = new System.Drawing.Point(143, 45);
+            this.model.Name = "model";
+            this.model.Size = new System.Drawing.Size(269, 26);
+            this.model.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(7, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Model";
             // 
             // DeviceCardAdd
             // 
@@ -224,8 +225,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox manufacturer;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox model;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox deviceType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox serialNo;
@@ -236,5 +235,7 @@
         private System.Windows.Forms.ComboBox name;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox model;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -64,6 +64,7 @@
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="DeviceCard.cs" />
     <Compile Include="DeviceCardAdd.cs">
       <SubType>Form</SubType>
     </Compile>
