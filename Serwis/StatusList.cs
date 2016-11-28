@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Serwis
 {
-    public partial class DeviceTypeList : UserControl
+    public partial class StatusList : UserControl
     {
         Home home;
-        public DeviceTypeList(Home h)
+        public StatusList(Home h)
         {
             InitializeComponent();
             this.home = h;
@@ -21,23 +21,23 @@ namespace Serwis
         }
         public void display()
         {
-            DeviceType deviceType = new DeviceType();
-            deviceTypeGrid.DataSource = deviceType.list();
-            deviceTypeGrid.Columns[0].ReadOnly = true;
-            deviceTypeGrid.Columns[1].HeaderText = "Typ";
-            deviceTypeGrid.Columns[2].Visible = false;
+            Status status = new Status();
+            statusGrid.DataSource = status.list();
+            statusGrid.Columns[0].ReadOnly = true;
+            statusGrid.Columns[1].HeaderText = "Status";
+            statusGrid.Columns[2].Visible = false;
         }
 
-        private void deviceTypeGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void statusGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DeviceType deviceType = new DeviceType();
-            if (deviceTypeGrid.CurrentCell.Value != null)
+            Status status = new Status();
+            if (statusGrid.CurrentCell.Value != null)
             {
-                if (deviceType.edit(Convert.ToInt32(deviceTypeGrid.CurrentRow.Cells[0].Value), deviceTypeGrid.CurrentRow.Cells[1].Value.ToString()))
+                if (status.edit(Convert.ToInt32(statusGrid.CurrentRow.Cells[0].Value), statusGrid.CurrentRow.Cells[1].Value.ToString()))
                 {
                     home.notifyIcon1.Icon = SystemIcons.Application;
                     home.notifyIcon1.BalloonTipText = "Edycja zakończona pomyślnie";
-                    home.notifyIcon1.BalloonTipTitle = "Lista statusów";
+                    home.notifyIcon1.BalloonTipTitle = "Lista typów urządzeń";
                     home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
                     home.notifyIcon1.Visible = true;
                     home.notifyIcon1.ShowBalloonTip(3000);
@@ -47,7 +47,7 @@ namespace Serwis
                 {
                     home.notifyIcon1.Icon = SystemIcons.Exclamation;
                     home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas edycji typu urządzeń";
-                    home.notifyIcon1.BalloonTipTitle = "Lista statusów";
+                    home.notifyIcon1.BalloonTipTitle = "Lista typów urządzeń";
                     home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
                     home.notifyIcon1.Visible = true;
                     home.notifyIcon1.ShowBalloonTip(3000);
@@ -59,21 +59,21 @@ namespace Serwis
             }
         }
 
-        private void deviceTypeGrid_KeyUp(object sender, KeyEventArgs e)
+        private void statusGrid_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
-                var confirmResult = MessageBox.Show("Jesteś pewien, że chcesz usunąć typ sprzętu " + deviceTypeGrid.CurrentRow.Cells[1].Value.ToString() + "?",
+                var confirmResult = MessageBox.Show("Jesteś pewien, że chcesz usunąć status " + statusGrid.CurrentRow.Cells[1].Value.ToString() + "?",
                                      "Potwierdź usuwanie",
                                      MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    DeviceType deviceType = new DeviceType();
-                    if (deviceType.delete(Convert.ToInt32(deviceTypeGrid.CurrentRow.Cells[0].Value)))
+                    Status status = new Status();
+                    if (status.delete(Convert.ToInt32(statusGrid.CurrentRow.Cells[0].Value)))
                     {
                         home.notifyIcon1.Icon = SystemIcons.Application;
-                        home.notifyIcon1.BalloonTipText = "Usunięto typ sprzętu " + deviceTypeGrid.CurrentRow.Cells[1].Value.ToString();
-                        home.notifyIcon1.BalloonTipTitle = "Usuwanie typu sprzętu";
+                        home.notifyIcon1.BalloonTipText = "Usunięto status " + statusGrid.CurrentRow.Cells[1].Value.ToString();
+                        home.notifyIcon1.BalloonTipTitle = "Usuwanie statusu";
                         home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
                         home.notifyIcon1.Visible = true;
                         home.notifyIcon1.ShowBalloonTip(3000);
@@ -82,8 +82,8 @@ namespace Serwis
                     else
                     {
                         home.notifyIcon1.Icon = SystemIcons.Exclamation;
-                        home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas usuwania typu sprzętu";
-                        home.notifyIcon1.BalloonTipTitle = "Usuwanie typu sprzętu";
+                        home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas usuwania statusu";
+                        home.notifyIcon1.BalloonTipTitle = "Usuwanie statusu";
                         home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
                         home.notifyIcon1.Visible = true;
                         home.notifyIcon1.ShowBalloonTip(3000);

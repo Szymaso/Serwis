@@ -106,5 +106,13 @@ namespace Serwis
         {
             new StatusAdd(this).Show();
         }
+
+        private void listaaStatusówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StatusList list = new StatusList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
+        }
     }
 }

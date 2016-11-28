@@ -200,6 +200,7 @@
             this.listaaStatusówToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
             this.listaaStatusówToolStripMenuItem.Text = "Lista statusów";
             this.listaaStatusówToolStripMenuItem.Visible = false;
+            this.listaaStatusówToolStripMenuItem.Click += new System.EventHandler(this.listaaStatusówToolStripMenuItem_Click);
             // 
             // notifyIcon1
             // 

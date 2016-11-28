@@ -169,6 +169,12 @@
     <Compile Include="Statuses.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StatusList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StatusList.Designer.cs">
+      <DependentUpon>StatusList.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="UserAdd.cs">
       <SubType>Form</SubType>
@@ -232,6 +238,9 @@
     </Compile>
     <EmbeddedResource Include="StatusAdd.resx">
       <DependentUpon>StatusAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatusList.resx">
+      <DependentUpon>StatusList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAdd.resx">
       <DependentUpon>UserAdd.cs</DependentUpon>

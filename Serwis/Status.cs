@@ -25,5 +25,46 @@ namespace Serwis
                 return false;
             }
         }
+        public Array list()
+        {
+            using (ProjektEntities pe = new ProjektEntities())
+            {
+                return pe.Statuses.OrderBy(p => p.Id).ToArray();
+            }
+        } 
+        public bool edit(int id, string statusName)
+        {
+            try
+            {
+                using(ProjektEntities pe = new ProjektEntities())
+                {
+                    var status = pe.Statuses.Find(id);
+                    status.name = statusName;
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool delete(int id)
+        {
+            try
+            {
+                using(ProjektEntities pe = new ProjektEntities())
+                {
+                    var status = pe.Statuses.Find(id);
+                    pe.Statuses.Remove(status);
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
