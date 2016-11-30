@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Serwis
 {
-    class Status
+    class Status : Inameable
     {
         public bool add(string statusName)
         {

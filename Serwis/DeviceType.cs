@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Serwis
 {
-    class DeviceType
+    class DeviceType : Inameable
     {
         public bool add(string type)
         {

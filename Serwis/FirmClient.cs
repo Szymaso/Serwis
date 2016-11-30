@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Serwis
 {
-    class FirmClient : Client
+    class FirmClient : Client, Inameable
     {
         override public bool addClient(string name, string surname, string city, string street, string houseNo, string locumNo, string phoneNo, string mail)
         {
@@ -88,7 +88,7 @@ namespace Serwis
                 return false;
             }
         }
-        override public string getName(int id)
+        public string getName(int id)
         {
             using (ProjektEntities pe = new ProjektEntities())
             {

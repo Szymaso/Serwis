@@ -22,10 +22,10 @@ namespace Serwis
         private void display()
         {
             devicesCardsGrid.DataSource = new DeviceCard().list();
-            Client individualClient = new IndividualClient();
-            Client firmClient = new FirmClient();
-            Status status = new Status();
-            DeviceType deviceType = new DeviceType();
+            Inameable individualClient = new IndividualClient();
+            Inameable firmClient = new FirmClient();
+            Inameable status = new Status();
+            Inameable deviceType = new DeviceType();
             for (int i = 0; i < devicesCardsGrid.RowCount; i++)
             {
                 if (!String.IsNullOrEmpty(devicesCardsGrid.Rows[i].Cells[6].Value.ToString()))
@@ -39,6 +39,13 @@ namespace Serwis
                 devicesCardsGrid.Rows[i].Cells[17].Value = status.getName(Convert.ToInt32(devicesCardsGrid.Rows[i].Cells[8].Value));
                 devicesCardsGrid.Rows[i].Cells[15].Value = deviceType.getName(Convert.ToInt32(devicesCardsGrid.Rows[i].Cells[9].Value));
             }
+            devicesCardsGrid.Columns[0].HeaderText = "ID";
+            devicesCardsGrid.Columns[0].ReadOnly = true;
+            devicesCardsGrid.Columns[1].HeaderText = "Producent";
+            devicesCardsGrid.Columns[2].HeaderText = "Model";
+            devicesCardsGrid.Columns[3].HeaderText = "Numer seryjny";
+            devicesCardsGrid.Columns[4].HeaderText = "Utworzony";
+            devicesCardsGrid.Columns[5].HeaderText = "Modyfikowany";
             devicesCardsGrid.Columns[6].Visible = false;
             devicesCardsGrid.Columns[7].Visible = false;
             devicesCardsGrid.Columns[8].Visible = false;

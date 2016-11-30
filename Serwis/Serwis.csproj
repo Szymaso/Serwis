@@ -120,6 +120,7 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inameable.cs" />
     <Compile Include="IndividualClient.cs" />
     <Compile Include="IndividualClientList.cs">
       <SubType>UserControl</SubType>
