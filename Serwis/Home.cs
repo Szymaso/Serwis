@@ -124,5 +124,13 @@ namespace Serwis
             homePanel.Controls.Clear();
             homePanel.Controls.Add(list);
         }
+
+        private void listaUrządzeńToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DevicesCardsList list = new DevicesCardsList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
+        }
     }
 }

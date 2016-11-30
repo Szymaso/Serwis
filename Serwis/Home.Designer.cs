@@ -50,6 +50,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.homePanel = new System.Windows.Forms.Panel();
             this.dodajStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaUrządzeńToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,7 +157,8 @@
             // sprzętToolStripMenuItem
             // 
             this.sprzętToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajToolStripMenuItem1});
+            this.dodajToolStripMenuItem1,
+            this.listaUrządzeńToolStripMenuItem});
             this.sprzętToolStripMenuItem.Name = "sprzętToolStripMenuItem";
             this.sprzętToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.sprzętToolStripMenuItem.Text = "Sprzęt";
@@ -164,8 +166,8 @@
             // dodajToolStripMenuItem1
             // 
             this.dodajToolStripMenuItem1.Name = "dodajToolStripMenuItem1";
-            this.dodajToolStripMenuItem1.Size = new System.Drawing.Size(125, 26);
-            this.dodajToolStripMenuItem1.Text = "Dodaj";
+            this.dodajToolStripMenuItem1.Size = new System.Drawing.Size(238, 26);
+            this.dodajToolStripMenuItem1.Text = "Dodaj kartę urządzenia";
             this.dodajToolStripMenuItem1.Click += new System.EventHandler(this.dodajToolStripMenuItem1_Click);
             // 
             // narzędziaAdministracyjneToolStripMenuItem
@@ -221,6 +223,13 @@
             this.dodajStatusToolStripMenuItem.Text = "Dodaj status";
             this.dodajStatusToolStripMenuItem.Click += new System.EventHandler(this.dodajStatusToolStripMenuItem_Click);
             // 
+            // listaUrządzeńToolStripMenuItem
+            // 
+            this.listaUrządzeńToolStripMenuItem.Name = "listaUrządzeńToolStripMenuItem";
+            this.listaUrządzeńToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.listaUrządzeńToolStripMenuItem.Text = "Karty urządzeń";
+            this.listaUrządzeńToolStripMenuItem.Click += new System.EventHandler(this.listaUrządzeńToolStripMenuItem_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -262,6 +271,7 @@
         private System.Windows.Forms.ToolStripMenuItem listaTypówSprzętuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaStatusówToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajStatusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaUrządzeńToolStripMenuItem;
     }
 }
 

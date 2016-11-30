@@ -88,5 +88,13 @@ namespace Serwis
                 return false;
             }
         }
+        override public string getName(int id)
+        {
+            using (ProjektEntities pe = new ProjektEntities())
+            {
+                var client = pe.Firms.Find(id);
+                return client.name + " ( firma - " + client.Id + ")";
+            }
+        }
     }
 }

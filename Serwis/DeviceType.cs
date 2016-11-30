@@ -66,5 +66,12 @@ namespace Serwis
                 return false;
             }
         }
+        public string getName(int id)
+        {
+            using(ProjektEntities pe = new ProjektEntities())
+            {
+                return pe.DeviceTypes.Find(id).type;
+            }
+        }
     }
 }
