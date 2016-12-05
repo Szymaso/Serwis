@@ -36,13 +36,6 @@ namespace Serwis
                 return false;
             }
         }
-        //public Array list()
-        //{
-        //    using (ProjektEntities pe = new ProjektEntities())
-        //    {
-        //        return pe.DevicesCards.OrderBy(dc => dc.Id).ToArray();
-        //    }
-        //}
         public DataTable list()
         {
             List<DevicesCards> list;
@@ -54,5 +47,6 @@ namespace Serwis
             table.Columns.Add();
             return table;
         }
+
     }
 }

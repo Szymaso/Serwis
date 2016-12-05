@@ -132,5 +132,10 @@ namespace Serwis
             homePanel.Controls.Clear();
             homePanel.Controls.Add(list);
         }
+
+        private void dodajKartęnaprawyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new DeviceRepairCardAdd(this).Show();
+        }
     }
 }

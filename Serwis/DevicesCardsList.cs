@@ -44,8 +44,9 @@ namespace Serwis
             devicesCardsGrid.Columns[1].HeaderText = "Producent";
             devicesCardsGrid.Columns[2].HeaderText = "Model";
             devicesCardsGrid.Columns[3].HeaderText = "Numer seryjny";
-            devicesCardsGrid.Columns[4].HeaderText = "Utworzony";
+            devicesCardsGrid.Columns[4].HeaderText = "Dodany do systemu";
             devicesCardsGrid.Columns[5].HeaderText = "Modyfikowany";
+            devicesCardsGrid.Columns[5].Visible = false;
             devicesCardsGrid.Columns[6].Visible = false;
             devicesCardsGrid.Columns[7].Visible = false;
             devicesCardsGrid.Columns[8].Visible = false;
