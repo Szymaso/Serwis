@@ -37,6 +37,7 @@ namespace Serwis
                     home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
                     home.notifyIcon1.Visible = true;
                     home.notifyIcon1.ShowBalloonTip(3000);
+                    new Printer();
                     this.Close();
                 }
                 else
