@@ -47,6 +47,12 @@ namespace Serwis
             table.Columns.Add();
             return table;
         }
-
+        public DevicesCards getDeviceData(int id)
+        {
+            using(ProjektEntities pe = new ProjektEntities())
+            {
+                return pe.DevicesCards.Find(id);
+            }
+        }
     }
 }

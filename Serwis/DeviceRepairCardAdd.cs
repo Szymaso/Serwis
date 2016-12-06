@@ -37,7 +37,10 @@ namespace Serwis
                     home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
                     home.notifyIcon1.Visible = true;
                     home.notifyIcon1.ShowBalloonTip(3000);
-                    new Printer();
+                    User user = new User();
+                    object[] userData = user.getData(user.getCurrentUserId());
+                    var device = new DeviceCard().getDeviceData(((ComboBoxItem)this.serialNo.SelectedItem).HiddenValue);
+                    new Printer(userData[1].ToString(),device.manufacturer,device.model,device.serial_no,new DeviceType().getName(device.type_id),damageDesc.Text,userData[0].ToString());
                     this.Close();
                 }
                 else

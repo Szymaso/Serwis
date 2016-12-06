@@ -6,56 +6,64 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 using iTextSharp.text.pdf;
+using System.Windows.Forms;
 
 namespace Serwis
 {
     class Printer
     {
-        public Printer()
+        public Printer(string place, string manufacturer, string model, string serialNo, string type, string damageDesc, string user)
         {
-            this.createPDF();
-           // this.SendToPrinter();
+            string path = this.createPDF(place, manufacturer, model, serialNo, type, damageDesc, user);
+            this.SendToPrinter(path);
         }
-        private void SendToPrinter()
+        private void SendToPrinter(string path)
         {
-            ProcessStartInfo info = new ProcessStartInfo();
-            info.Verb = "print";
-            info.FileName = @"..\..\..\PDF\file.pdf";
-            info.CreateNoWindow = true;
-            info.WindowStyle = ProcessWindowStyle.Hidden;
+            var confirmResult = MessageBox.Show("Czy chcesz wydrukować potwierdzenie?",
+                                     "Drukowanie",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.Verb = "print";
+                info.FileName = path;
+                info.CreateNoWindow = true;
+                info.WindowStyle = ProcessWindowStyle.Hidden;
 
-            Process p = new Process();
-            p.StartInfo = info;
-            p.Start();
+                Process p = new Process();
+                p.StartInfo = info;
+                p.Start();
 
-            p.WaitForInputIdle();
-            System.Threading.Thread.Sleep(3000);
-            if (false == p.CloseMainWindow())
-                p.Kill();
+                p.WaitForInputIdle();
+                System.Threading.Thread.Sleep(3000);
+                if (false == p.CloseMainWindow())
+                    p.Kill();
+            }
         }
-        private void createPDF()
+        private string createPDF(string place, string manufacturer, string model, string serialNo, string type, string damageDesc, string user)
         {
             string template = @"..\..\..\PDF\template.pdf";
-            string newFile = @"..\..\..\PDF\confirmation_" + DateTime.Now.ToShortDateString() + ".pdf";
+            string newFile = @"..\..\..\PDF\confirmation_" + serialNo + "_" + DateTime.Now.ToShortDateString() + ".pdf";
             PdfReader reader = new PdfReader(template);
             using (PdfStamper stamper = new PdfStamper(reader, new FileStream(newFile, FileMode.Create)))
             {
                 AcroFields fields = stamper.AcroFields;
 
                 // set form fields
-                fields.SetField("place", "Miejsce");
-                fields.SetField("date", "15.11.2016");
-                fields.SetField("manufacturer", "Producent");
-                fields.SetField("model", "Model");
-                fields.SetField("serialNo", "Numer");
-                fields.SetField("type", "Typ");
-                fields.SetField("damageDesc", "dsfddddddddddddddddddddd dddddddddddddddddd dddddddddddddddd ddddddddddddddddd dddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-                fields.SetField("user", "Serwisant");
+                fields.SetField("place", place);
+                fields.SetField("date", DateTime.Now.ToLocalTime().ToString());
+                fields.SetField("manufacturer", manufacturer);
+                fields.SetField("model", model);
+                fields.SetField("serialNo", serialNo);
+                fields.SetField("type", type);
+                fields.SetField("damageDesc", damageDesc);
+                fields.SetField("user", user);
 
                 // flatten form fields and close document
                 stamper.FormFlattening = true;
                 stamper.Close();
             }
+            return newFile;
         }
     }
 }
