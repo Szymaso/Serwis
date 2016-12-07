@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.devicesCardsGrid = new System.Windows.Forms.DataGridView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.devicesCardsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.devicesCardsGrid.Location = new System.Drawing.Point(0, 0);
             this.devicesCardsGrid.Name = "devicesCardsGrid";
             this.devicesCardsGrid.RowTemplate.Height = 24;
-            this.devicesCardsGrid.Size = new System.Drawing.Size(150, 150);
+            this.devicesCardsGrid.Size = new System.Drawing.Size(944, 537);
             this.devicesCardsGrid.TabIndex = 0;
             // 
             // DevicesCardsList
@@ -52,6 +53,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.devicesCardsGrid);
             this.Name = "DevicesCardsList";
+            this.Size = new System.Drawing.Size(944, 537);
             ((System.ComponentModel.ISupportInitialize)(this.devicesCardsGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -60,5 +62,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView devicesCardsGrid;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

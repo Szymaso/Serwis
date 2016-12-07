@@ -117,6 +117,12 @@
     <Compile Include="DeviceRepairCardAdd.Designer.cs">
       <DependentUpon>DeviceRepairCardAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeviceRepairCardsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceRepairCardsList.Designer.cs">
+      <DependentUpon>DeviceRepairCardsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="DevicesCardsList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceRepairCardAdd.resx">
       <DependentUpon>DeviceRepairCardAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceRepairCardsList.resx">
+      <DependentUpon>DeviceRepairCardsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DevicesCardsList.resx">
       <DependentUpon>DevicesCardsList.cs</DependentUpon>

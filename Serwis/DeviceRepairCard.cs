@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Serwis
 {
@@ -21,6 +22,17 @@ namespace Serwis
                 return true;
             }
             catch { return false; }
+        }
+        public DataTable list(bool repaired)
+        {
+            List<DeviceRepairCards> list;
+            ProjektEntities pe = new ProjektEntities();
+            list = pe.DeviceRepairCards.Where(drc => drc.repaired == repaired).ToList();
+            DataTable table = DataHelper.ToDataTable<DeviceRepairCards>(list);
+            table.Columns.Add();
+            table.Columns.Add();
+            table.Columns.Add();
+            return table;
         }
     }
 }

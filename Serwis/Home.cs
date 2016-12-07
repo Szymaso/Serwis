@@ -137,5 +137,13 @@ namespace Serwis
         {
             new DeviceRepairCardAdd(this).Show();
         }
+
+        private void kartyNaprawToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeviceRepairCardsList list = new DeviceRepairCardsList(this);
+            list.Dock = DockStyle.Fill;
+            homePanel.Controls.Clear();
+            homePanel.Controls.Add(list);
+        }
     }
 }
