@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using iTextSharp.text.pdf;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace Serwis
 {
@@ -42,8 +43,10 @@ namespace Serwis
         }
         private string createPDF(string place, string manufacturer, string model, string serialNo, string type, string damageDesc, string user)
         {
-            string template = @"..\..\..\PDF\template.pdf";
-            string newFile = @"..\..\..\PDF\confirmation_" + serialNo + "_" + DateTime.Now.ToShortDateString() + ".pdf";
+            if (!Directory.Exists(Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents") + @"\PDF"))
+                Directory.CreateDirectory(Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents") + @"\PDF");
+            var template = Serwis.Properties.Resources.template;
+            string newFile = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents") + @"\PDF\confirmation_" + serialNo + "_" + DateTime.Now.ToShortDateString() + ".pdf";
             PdfReader reader = new PdfReader(template);
             using (PdfStamper stamper = new PdfStamper(reader, new FileStream(newFile, FileMode.Create)))
             {
