@@ -21,13 +21,23 @@ namespace Serwis
         }
         public void display()
         {
-               
+            if(new User().isSuperadmin())
+            {
+                this.placeBox.Visible = true;
+                this.placeLabel.Visible = true;
+                foreach(var p in new ProjektEntities().Places)
+                {
+                    this.placeBox.Items.Add(new ComboBoxItem(p.address, p.id));
+                }
+            }
             DeviceCard dc = new DeviceCard();
             Place place = new Place();
-            tableLayoutPanel1.RowStyles[0].Height = 7;
-            bool rep;
+            tableLayoutPanel1.RowStyles[0].Height = 18;
+            bool rep, diagnosis, note;
             rep = this.repaired.Text == "TAK" ? true : false;
-            deviceRepairCardList.DataSource = new DeviceRepairCard().list(rep);
+            diagnosis = this.diagnosisBox.Text == "TAK" ? true : false;
+            note = this.note.Text == "TAK" ? true : false;
+            deviceRepairCardList.DataSource = new DeviceRepairCard().list(rep,diagnosis,note);
             deviceRepairCardList.Columns[0].HeaderText = "ID";
             deviceRepairCardList.Columns[1].HeaderText = "Opis uszkodzenia";
             deviceRepairCardList.Columns[2].HeaderText = "Diagnoza";
@@ -51,6 +61,43 @@ namespace Serwis
         private void repaired_TextChanged(object sender, EventArgs e)
         {
             this.display();
+        }
+        private void diagnosis_Click(object sender, EventArgs e)
+        {
+            new DeviceRepairCardDiagnosis(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[0].Value)).Show();
+        }
+
+        private void note_Click(object sender, EventArgs e)
+        {
+            new DeviceRepairCardNote(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[0].Value)).Show();
+        }
+
+        private void repairEnd_Click(object sender, EventArgs e)
+        {
+            if(new DeviceRepairCard().makeRepaired(Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[0].Value)))
+            {
+                home.notifyIcon1.Icon = SystemIcons.Application;
+                home.notifyIcon1.BalloonTipText = "Urządzenie oznaczono jako naprawione";
+                home.notifyIcon1.BalloonTipTitle = "Serwis";
+                home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                home.notifyIcon1.Visible = true;
+                home.notifyIcon1.ShowBalloonTip(3000);
+                this.display();
+            }
+            else
+            {
+                home.notifyIcon1.Icon = SystemIcons.Exclamation;
+                home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas oznaczania urządzenia jako naprawione. Spróbuj ponownie później.";
+                home.notifyIcon1.BalloonTipTitle = "Serwis";
+                home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
+                home.notifyIcon1.Visible = true;
+                home.notifyIcon1.ShowBalloonTip(3000);
+            }
+        }
+
+        private void statusChange_Click(object sender, EventArgs e)
+        {
+            new DeviceRepairCardStatus(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[7].Value)).Show();
         }
     }
 }

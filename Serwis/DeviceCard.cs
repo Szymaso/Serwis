@@ -54,5 +54,25 @@ namespace Serwis
                 return pe.DevicesCards.Find(id);
             }
         }
+        public bool statusChange(int id, int status)
+        {
+            try
+            {
+                using(ProjektEntities pe = new ProjektEntities())
+                {
+                    var dc = pe.DevicesCards.Find(id);
+                    dc.status_id = status;
+                    dc.updated_at = DateTime.Now;
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                //System.Windows.Forms.MessageBox.Show(ex.InnerException.ToString());
+                return false;
+            }
+        }
     }
 }

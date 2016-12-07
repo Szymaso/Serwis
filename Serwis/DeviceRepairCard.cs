@@ -24,11 +24,12 @@ namespace Serwis
             }
             catch { return false; }
         }
-        public DataTable list(bool repaired)
+        public DataTable list(bool repaired, bool diagnosis, bool note)
         {
             User user = new User();
             List<DeviceRepairCards> list;
             ProjektEntities pe = new ProjektEntities();
+            int diagnosisLength = diagnosis == true ? 1 : 0;
             if (user.isSuperadmin())
                 list = pe.DeviceRepairCards.Where(drc => drc.repaired == repaired).ToList();
             else
@@ -39,6 +40,60 @@ namespace Serwis
             DataTable table = DataHelper.ToDataTable<DeviceRepairCards>(list);
             table.Columns.Add();
             return table;
+        }
+        public bool diagnosis(int id, string diag)
+        {
+            try
+            {
+                using(ProjektEntities pe = new ProjektEntities())
+                {
+                    var drc = pe.DeviceRepairCards.Find(id);
+                    drc.diagnosis = diag;
+                    drc.updated_at = DateTime.Now;
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool note(int id, string note)
+        {
+            try
+            {
+                using (ProjektEntities pe = new ProjektEntities())
+                {
+                    var drc = pe.DeviceRepairCards.Find(id);
+                    drc.repair_note = note;
+                    drc.updated_at = DateTime.Now;
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool makeRepaired(int id)
+        {
+            try
+            {
+                using (ProjektEntities pe = new ProjektEntities())
+                {
+                    var drc = pe.DeviceRepairCards.Find(id);
+                    drc.repaired = true;
+                    drc.updated_at = DateTime.Now;
+                    pe.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
