@@ -19,6 +19,8 @@
         <AssociationConnector Association="ProjektModel.FK_DevicesCards_Statuses" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_DevicesCards_Types" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_Users_Places" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProjektModel.database_firewall_rules" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="ProjektModel.FK_DeviceRepairCards_Places" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

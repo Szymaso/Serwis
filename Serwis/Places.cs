@@ -18,6 +18,7 @@ namespace Serwis
         public Places()
         {
             this.Users = new HashSet<Users>();
+            this.DeviceRepairCards = new HashSet<DeviceRepairCards>();
         }
     
         public int id { get; set; }
@@ -25,5 +26,7 @@ namespace Serwis
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeviceRepairCards> DeviceRepairCards { get; set; }
     }
 }

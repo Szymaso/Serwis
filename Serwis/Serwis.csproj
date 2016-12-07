@@ -102,6 +102,9 @@
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>ProjectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataHelper.cs" />
     <Compile Include="DeviceCard.cs" />
     <Compile Include="DeviceCardAdd.cs">

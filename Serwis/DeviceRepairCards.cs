@@ -22,7 +22,9 @@ namespace Serwis
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
         public int device_id { get; set; }
+        public int place_id { get; set; }
     
         public virtual DevicesCards DevicesCards { get; set; }
+        public virtual Places Places { get; set; }
     }
 }

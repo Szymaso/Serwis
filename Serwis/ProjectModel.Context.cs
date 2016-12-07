@@ -33,5 +33,6 @@ namespace Serwis
         public virtual DbSet<Places> Places { get; set; }
         public virtual DbSet<Statuses> Statuses { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }
