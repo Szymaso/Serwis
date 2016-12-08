@@ -27,6 +27,7 @@ namespace Serwis
             placeListGrid.Columns[0].HeaderText = "ID";
             placeListGrid.Columns[0].ReadOnly = true;
             placeListGrid.Columns[1].HeaderText = "Adres";
+            placeListGrid.Columns[3].Visible = false;
         }
 
         private void placeListGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
