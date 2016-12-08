@@ -200,6 +200,7 @@
             this.placeBox.Size = new System.Drawing.Size(172, 24);
             this.placeBox.TabIndex = 17;
             this.placeBox.Visible = false;
+            this.placeBox.TextChanged += new System.EventHandler(this.placeBox_TextChanged);
             // 
             // placeLabel
             // 
@@ -220,6 +221,7 @@
             this.changeTo.Size = new System.Drawing.Size(200, 23);
             this.changeTo.TabIndex = 15;
             this.changeTo.Value = new System.DateTime(2016, 12, 7, 22, 13, 55, 0);
+            this.changeTo.Leave += new System.EventHandler(this.changeTo_ValueChanged);
             // 
             // changeFrom
             // 
@@ -229,6 +231,7 @@
             this.changeFrom.Size = new System.Drawing.Size(200, 23);
             this.changeFrom.TabIndex = 14;
             this.changeFrom.Value = new System.DateTime(2016, 12, 7, 22, 13, 55, 0);
+            this.changeFrom.Leave += new System.EventHandler(this.changeFrom_ValueChanged);
             // 
             // label7
             // 
@@ -268,6 +271,7 @@
             this.addTo.Size = new System.Drawing.Size(200, 23);
             this.addTo.TabIndex = 10;
             this.addTo.Value = new System.DateTime(2016, 12, 7, 22, 13, 55, 0);
+            this.addTo.Leave += new System.EventHandler(this.addTo_ValueChanged);
             // 
             // addFrom
             // 
@@ -276,7 +280,8 @@
             this.addFrom.Name = "addFrom";
             this.addFrom.Size = new System.Drawing.Size(200, 23);
             this.addFrom.TabIndex = 9;
-            this.addFrom.Value = new System.DateTime(2016, 12, 7, 22, 13, 55, 0);
+            this.addFrom.Value = new System.DateTime(2016, 12, 8, 0, 0, 0, 0);
+            this.addFrom.Leave += new System.EventHandler(this.addFrom_ValueChanged);
             // 
             // label6
             // 

@@ -13,6 +13,7 @@ namespace Serwis
     public partial class DeviceRepairCardsList : UserControl
     {
         Home home;
+        private bool add_date = false, edit_date = false;
         public DeviceRepairCardsList(Home h)
         {
             InitializeComponent();
@@ -25,9 +26,12 @@ namespace Serwis
             {
                 this.placeBox.Visible = true;
                 this.placeLabel.Visible = true;
-                foreach(var p in new ProjektEntities().Places)
+                if (placeBox.Items.Count == 0)
                 {
-                    this.placeBox.Items.Add(new ComboBoxItem(p.address, p.id));
+                    foreach (var p in new ProjektEntities().Places)
+                    {
+                        this.placeBox.Items.Add(new ComboBoxItem(p.address, p.id));
+                    }
                 }
             }
             DeviceCard dc = new DeviceCard();
@@ -37,7 +41,30 @@ namespace Serwis
             rep = this.repaired.Text == "TAK" ? true : false;
             diagnosis = this.diagnosisBox.Text == "TAK" ? true : false;
             note = this.noteBox.Text == "TAK" ? true : false;
-            deviceRepairCardList.DataSource = new DeviceRepairCard().list(rep,diagnosis,note);
+            if(this.add_date == false)
+            {
+                this.addFrom.Value = DateTime.Now;
+                this.addTo.Value = DateTime.Now;
+            }
+            if (this.edit_date == false)
+            {
+                this.changeFrom.Value = DateTime.Now;
+                this.changeTo.Value = DateTime.Now;
+            }
+
+            int placeId;
+            try
+            {
+                placeId = ((ComboBoxItem)this.placeBox.SelectedItem).HiddenValue;
+            }
+            catch(NullReferenceException)
+            {
+                placeId = 0;
+            }
+
+            deviceRepairCardList.DataSource = new DeviceRepairCard().list(rep,diagnosis,note,this.addFrom.Value,this.addTo.Value, this.add_date,
+                                                                          this.changeFrom.Value, this.changeTo.Value, this.edit_date, placeId
+                                                                        );
             deviceRepairCardList.Columns[0].HeaderText = "ID";
             deviceRepairCardList.Columns[1].HeaderText = "Opis uszkodzenia";
             deviceRepairCardList.Columns[2].HeaderText = "Diagnoza";
@@ -51,7 +78,7 @@ namespace Serwis
             deviceRepairCardList.Columns[10].Visible = false;
             deviceRepairCardList.Columns[11].HeaderText = "Miejsce";
 
-            for (int i = 0; i < deviceRepairCardList.RowCount - 1; i++)
+            for (int i = 0; i < deviceRepairCardList.RowCount; i++)
             {
                 deviceRepairCardList.Rows[i].Cells[9].Value = (dc.getDeviceData(Convert.ToInt32(deviceRepairCardList.Rows[i].Cells[7].Value.ToString())).serial_no).ToString();
                 deviceRepairCardList.Rows[i].Cells[11].Value = place.getAddress(Convert.ToInt32(deviceRepairCardList.Rows[i].Cells[8].Value)).ToString();
@@ -106,6 +133,35 @@ namespace Serwis
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.display();
+        }
+
+        private void addFrom_ValueChanged(object sender, EventArgs e)
+        {
+            this.add_date = true;
+            this.display();
+        }
+
+        private void addTo_ValueChanged(object sender, EventArgs e)
+        {
+            this.add_date = true;
+            this.display();
+        }
+
+        private void changeFrom_ValueChanged(object sender, EventArgs e)
+        {
+            this.edit_date = true;
+            this.display();
+        }
+
+        private void changeTo_ValueChanged(object sender, EventArgs e)
+        {
+            this.edit_date = true;
+            this.display();
+        }
+
+        private void placeBox_TextChanged(object sender, EventArgs e)
         {
             this.display();
         }
