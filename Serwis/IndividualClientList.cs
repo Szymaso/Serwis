@@ -21,23 +21,27 @@ namespace Serwis
         }
         private void display()
         {
-            IndividualClient client = new IndividualClient();
-            individualClientGrid.DataSource = client.list();
-            individualClientGrid.Columns[0].HeaderText = "ID";
-            individualClientGrid.Columns[0].ReadOnly = true;
-            individualClientGrid.Columns[1].HeaderText = "Nazwa";
-            individualClientGrid.Columns[2].HeaderText = "Nazwisko";
-            individualClientGrid.Columns[3].HeaderText = "Miasto";
-            individualClientGrid.Columns[4].HeaderText = "Ulica";
-            individualClientGrid.Columns[5].HeaderText = "Numer domu";
-            individualClientGrid.Columns[6].HeaderText = "Numer lokalu";
-            individualClientGrid.Columns[7].HeaderText = "Numer telefonu";
-            individualClientGrid.Columns[8].HeaderText = "Email";
-            individualClientGrid.Columns[9].HeaderText = "Utworzony";
-            individualClientGrid.Columns[9].ReadOnly = true;
-            individualClientGrid.Columns[10].HeaderText = "Edytowany";
-            individualClientGrid.Columns[10].ReadOnly = true;
-            individualClientGrid.Columns[11].Visible = false;
+            try
+            {
+                IndividualClient client = new IndividualClient();
+                individualClientGrid.DataSource = client.list();
+                individualClientGrid.Columns[0].HeaderText = "ID";
+                individualClientGrid.Columns[0].ReadOnly = true;
+                individualClientGrid.Columns[1].HeaderText = "Nazwa";
+                individualClientGrid.Columns[2].HeaderText = "Nazwisko";
+                individualClientGrid.Columns[3].HeaderText = "Miasto";
+                individualClientGrid.Columns[4].HeaderText = "Ulica";
+                individualClientGrid.Columns[5].HeaderText = "Numer domu";
+                individualClientGrid.Columns[6].HeaderText = "Numer lokalu";
+                individualClientGrid.Columns[7].HeaderText = "Numer telefonu";
+                individualClientGrid.Columns[8].HeaderText = "Email";
+                individualClientGrid.Columns[9].HeaderText = "Utworzony";
+                individualClientGrid.Columns[9].ReadOnly = true;
+                individualClientGrid.Columns[10].HeaderText = "Edytowany";
+                individualClientGrid.Columns[10].ReadOnly = true;
+                individualClientGrid.Columns[11].Visible = false;
+            }
+            catch { }
         }
 
         private void individualClientGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)

@@ -21,13 +21,17 @@ namespace Serwis
         }
         private void display()
         {
-            Place p = new Place();
-            placeListGrid.DataSource = p.list();
-            placeListGrid.Columns[2].Visible = false;
-            placeListGrid.Columns[0].HeaderText = "ID";
-            placeListGrid.Columns[0].ReadOnly = true;
-            placeListGrid.Columns[1].HeaderText = "Adres";
-            placeListGrid.Columns[3].Visible = false;
+            try
+            {
+                Place p = new Place();
+                placeListGrid.DataSource = p.list();
+                placeListGrid.Columns[2].Visible = false;
+                placeListGrid.Columns[0].HeaderText = "ID";
+                placeListGrid.Columns[0].ReadOnly = true;
+                placeListGrid.Columns[1].HeaderText = "Adres";
+                placeListGrid.Columns[3].Visible = false;
+            }
+            catch { }
         }
 
         private void placeListGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)

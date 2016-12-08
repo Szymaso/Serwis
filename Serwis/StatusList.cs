@@ -21,11 +21,15 @@ namespace Serwis
         }
         public void display()
         {
-            Status status = new Status();
-            statusGrid.DataSource = status.list();
-            statusGrid.Columns[0].ReadOnly = true;
-            statusGrid.Columns[1].HeaderText = "Status";
-            statusGrid.Columns[2].Visible = false;
+            try
+            {
+                Status status = new Status();
+                statusGrid.DataSource = status.list();
+                statusGrid.Columns[0].ReadOnly = true;
+                statusGrid.Columns[1].HeaderText = "Status";
+                statusGrid.Columns[2].Visible = false;
+            }
+            catch { }
         }
 
         private void statusGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)

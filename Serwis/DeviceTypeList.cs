@@ -21,11 +21,15 @@ namespace Serwis
         }
         public void display()
         {
-            DeviceType deviceType = new DeviceType();
-            deviceTypeGrid.DataSource = deviceType.list();
-            deviceTypeGrid.Columns[0].ReadOnly = true;
-            deviceTypeGrid.Columns[1].HeaderText = "Typ";
-            deviceTypeGrid.Columns[2].Visible = false;
+            try
+            {
+                DeviceType deviceType = new DeviceType();
+                deviceTypeGrid.DataSource = deviceType.list();
+                deviceTypeGrid.Columns[0].ReadOnly = true;
+                deviceTypeGrid.Columns[1].HeaderText = "Typ";
+                deviceTypeGrid.Columns[2].Visible = false;
+            }
+            catch { }
         }
 
         private void deviceTypeGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
