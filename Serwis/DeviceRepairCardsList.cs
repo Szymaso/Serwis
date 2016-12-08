@@ -36,7 +36,7 @@ namespace Serwis
             bool rep, diagnosis, note;
             rep = this.repaired.Text == "TAK" ? true : false;
             diagnosis = this.diagnosisBox.Text == "TAK" ? true : false;
-            note = this.note.Text == "TAK" ? true : false;
+            note = this.noteBox.Text == "TAK" ? true : false;
             deviceRepairCardList.DataSource = new DeviceRepairCard().list(rep,diagnosis,note);
             deviceRepairCardList.Columns[0].HeaderText = "ID";
             deviceRepairCardList.Columns[1].HeaderText = "Opis uszkodzenia";
@@ -98,6 +98,16 @@ namespace Serwis
         private void statusChange_Click(object sender, EventArgs e)
         {
             new DeviceRepairCardStatus(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[7].Value)).Show();
+        }
+
+        private void diagnosisBox_TextChanged(object sender, EventArgs e)
+        {
+            this.display();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.display();
         }
     }
 }

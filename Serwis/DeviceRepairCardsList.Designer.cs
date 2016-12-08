@@ -32,6 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.statusChange = new System.Windows.Forms.Button();
             this.repairEnd = new System.Windows.Forms.Button();
             this.note = new System.Windows.Forms.Button();
             this.diagnosis = new System.Windows.Forms.Button();
@@ -48,13 +49,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.noteBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.diagnosisBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.repaired = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.statusChange = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.deviceRepairCardList)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,6 +64,8 @@
             // 
             // deviceRepairCardList
             // 
+            this.deviceRepairCardList.AllowUserToAddRows = false;
+            this.deviceRepairCardList.AllowUserToDeleteRows = false;
             this.deviceRepairCardList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.deviceRepairCardList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.deviceRepairCardList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -116,6 +118,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Akcje";
             // 
+            // statusChange
+            // 
+            this.statusChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.statusChange.Location = new System.Drawing.Point(393, 25);
+            this.statusChange.Name = "statusChange";
+            this.statusChange.Size = new System.Drawing.Size(206, 33);
+            this.statusChange.TabIndex = 3;
+            this.statusChange.Text = "Zmień status";
+            this.statusChange.UseVisualStyleBackColor = true;
+            this.statusChange.Click += new System.EventHandler(this.statusChange_Click);
+            // 
             // repairEnd
             // 
             this.repairEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -163,7 +176,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.noteBox);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.diagnosisBox);
             this.groupBox2.Controls.Add(this.label2);
@@ -295,18 +308,19 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Data dodania";
             // 
-            // comboBox1
+            // noteBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.noteBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.noteBox.FormattingEnabled = true;
+            this.noteBox.Items.AddRange(new object[] {
             "TAK",
             "NIE"});
-            this.comboBox1.Location = new System.Drawing.Point(479, 35);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(62, 24);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "NIE";
+            this.noteBox.Location = new System.Drawing.Point(479, 35);
+            this.noteBox.Name = "noteBox";
+            this.noteBox.Size = new System.Drawing.Size(62, 24);
+            this.noteBox.TabIndex = 5;
+            this.noteBox.Text = "NIE";
+            this.noteBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -330,6 +344,7 @@
             this.diagnosisBox.Size = new System.Drawing.Size(62, 24);
             this.diagnosisBox.TabIndex = 3;
             this.diagnosisBox.Text = "NIE";
+            this.diagnosisBox.TextChanged += new System.EventHandler(this.diagnosisBox_TextChanged);
             // 
             // label2
             // 
@@ -365,17 +380,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Naprawione";
             // 
-            // statusChange
-            // 
-            this.statusChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.statusChange.Location = new System.Drawing.Point(393, 25);
-            this.statusChange.Name = "statusChange";
-            this.statusChange.Size = new System.Drawing.Size(206, 33);
-            this.statusChange.TabIndex = 3;
-            this.statusChange.Text = "Zmień status";
-            this.statusChange.UseVisualStyleBackColor = true;
-            this.statusChange.Click += new System.EventHandler(this.statusChange_Click);
-            // 
             // DeviceRepairCardsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -407,7 +411,7 @@
         private System.Windows.Forms.Button diagnosis;
         private System.Windows.Forms.ComboBox diagnosisBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox noteBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker addTo;
         private System.Windows.Forms.DateTimePicker addFrom;

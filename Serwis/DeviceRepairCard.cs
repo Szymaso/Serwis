@@ -26,17 +26,24 @@ namespace Serwis
         }
         public DataTable list(bool repaired, bool diagnosis, bool note)
         {
+            ProjektEntities pe = new ProjektEntities();
             User user = new User();
             List<DeviceRepairCards> list;
-            ProjektEntities pe = new ProjektEntities();
+            list = pe.DeviceRepairCards.Where(d => d.repaired == repaired).ToList();
             int diagnosisLength = diagnosis == true ? 1 : 0;
-            if (user.isSuperadmin())
-                list = pe.DeviceRepairCards.Where(drc => drc.repaired == repaired).ToList();
-            else
+            if(!user.isSuperadmin())
             {
                 int from = user.from(user.getCurrentUserId());
-                list = pe.DeviceRepairCards.Where(drc => drc.repaired == repaired).Where(drc => drc.place_id == from).ToList();
+                list = list.Where(drc => drc.place_id == from).ToList();
             }
+            if (diagnosis == false)
+                list = list.Where(drc => drc.diagnosis == null).ToList();
+            else
+                list = list.Where(drc => drc.diagnosis != null).ToList();
+            if (note == false)
+                list = list.Where(drc => drc.repair_note == null).ToList();
+            else
+                list = list.Where(drc => drc.repair_note != null).ToList();
             DataTable table = DataHelper.ToDataTable<DeviceRepairCards>(list);
             table.Columns.Add();
             return table;
