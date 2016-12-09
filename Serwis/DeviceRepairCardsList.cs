@@ -96,35 +96,47 @@ namespace Serwis
 
         private void note_Click(object sender, EventArgs e)
         {
-            new DeviceRepairCardNote(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[0].Value)).Show();
+            try
+            {
+                new DeviceRepairCardNote(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[0].Value)).Show();
+            }
+            catch { }
         }
 
         private void repairEnd_Click(object sender, EventArgs e)
         {
-            if(new DeviceRepairCard().makeRepaired(Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[0].Value)))
+            try
             {
-                home.notifyIcon1.Icon = SystemIcons.Application;
-                home.notifyIcon1.BalloonTipText = "Urządzenie oznaczono jako naprawione";
-                home.notifyIcon1.BalloonTipTitle = "Serwis";
-                home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
-                home.notifyIcon1.Visible = true;
-                home.notifyIcon1.ShowBalloonTip(3000);
-                this.display();
+                if (new DeviceRepairCard().makeRepaired(Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[0].Value)))
+                {
+                    home.notifyIcon1.Icon = SystemIcons.Application;
+                    home.notifyIcon1.BalloonTipText = "Urządzenie oznaczono jako naprawione";
+                    home.notifyIcon1.BalloonTipTitle = "Serwis";
+                    home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                    home.notifyIcon1.Visible = true;
+                    home.notifyIcon1.ShowBalloonTip(3000);
+                    this.display();
+                }
+                else
+                {
+                    home.notifyIcon1.Icon = SystemIcons.Exclamation;
+                    home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas oznaczania urządzenia jako naprawione. Spróbuj ponownie później.";
+                    home.notifyIcon1.BalloonTipTitle = "Serwis";
+                    home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
+                    home.notifyIcon1.Visible = true;
+                    home.notifyIcon1.ShowBalloonTip(3000);
+                }
             }
-            else
-            {
-                home.notifyIcon1.Icon = SystemIcons.Exclamation;
-                home.notifyIcon1.BalloonTipText = "Wystąpił błąd podczas oznaczania urządzenia jako naprawione. Spróbuj ponownie później.";
-                home.notifyIcon1.BalloonTipTitle = "Serwis";
-                home.notifyIcon1.BalloonTipIcon = ToolTipIcon.Error;
-                home.notifyIcon1.Visible = true;
-                home.notifyIcon1.ShowBalloonTip(3000);
-            }
+            catch { }
         }
 
         private void statusChange_Click(object sender, EventArgs e)
         {
-            new DeviceRepairCardStatus(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[7].Value)).Show();
+            try
+            {
+                new DeviceRepairCardStatus(home, Convert.ToInt32(deviceRepairCardList.CurrentRow.Cells[7].Value)).Show();
+            }
+            catch { }
         }
 
         private void diagnosisBox_TextChanged(object sender, EventArgs e)
